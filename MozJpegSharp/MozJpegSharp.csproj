@@ -4,7 +4,7 @@
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45;netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <Product>.NET wrapper for mozjpeg</Product>
-    <Description>libjpeg-turbo is a JPEG image codec that uses processor instructions to accelerate JPEG compression and decompression.</Description>
+    <Description>MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.</Description>
     <PackageProjectUrl>https://github.com/georg-jung/MozJpegSharp</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>sergeyter, quamotion, Georg Jung</Authors>
@@ -29,15 +29,15 @@
 
   <ItemGroup Condition="'$(SYSTEM_ARTIFACTSDIRECTORY)' != ''">
     <!-- Native libraries; these files come from VSTS artifacts -->
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libjpeg-turbo/win7-x64/bin/turbojpeg.dll">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/mozjpeg/win7-x64/bin/turbojpeg.dll">
       <PackagePath>runtimes/win-x64/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libjpeg-turbo/win7-x86/bin/turbojpeg.dll">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/mozjpeg/win7-x86/bin/turbojpeg.dll">
       <PackagePath>runtimes/win-x86/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
-    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/libjpeg-turbo/osx-x64/lib/libturbojpeg.dylib">
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/mozjpeg/osx-x64/lib/libturbojpeg.dylib">
       <PackagePath>runtimes/osx-x64/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
