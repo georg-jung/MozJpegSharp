@@ -1,16 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45;netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <Product>.NET wrapper for mozjpeg</Product>
     <Description>MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.</Description>
-    <PackageProjectUrl>https://github.com/georg-jung/MozJpegSharp</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>sergeyter, quamotion, Georg Jung</Authors>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <Deterministic>True</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>MozJpegSharp</PackageId>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/georg-jung/MozJpegSharp</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageDescription>Managed wrapper for mozjpeg. Includes native binaries for Windows and OS X, requires MozJpeg to be installed on Linux. MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.</PackageDescription>
+    <PackageTags>jpeg;mozjpeg;mozilla;jpg;mozjpg;libjpeg;libjpeg-turbo;image;images;wrapper;native</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net45'">
