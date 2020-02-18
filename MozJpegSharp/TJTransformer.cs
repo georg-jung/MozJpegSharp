@@ -187,7 +187,7 @@ namespace MozJpegSharp
         /// <exception cref="ArgumentNullException"><paramref name="transforms"/> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">Transforms can not be empty.</exception>
         /// <exception cref="TJException"> Throws if low level turbo jpeg function fails. </exception>
-        public unsafe byte[][] Transform(byte[] jpegBuf, TJTransformDescription[] transforms, TJFlags flags)
+        public byte[][] Transform(byte[] jpegBuf, TJTransformDescription[] transforms, TJFlags flags)
         {
             if (jpegBuf == null)
             {
@@ -202,9 +202,15 @@ namespace MozJpegSharp
                 throw new ArgumentException("Transforms can not be empty", nameof(transforms));
             }
 
-            fixed (byte* jpegPtr = jpegBuf)
+            var pinnedJpegBuf = GCHandle.Alloc(jpegBuf, GCHandleType.Pinned);
+            try
             {
-                return this.Transform((IntPtr)jpegPtr, (ulong)jpegBuf.Length, transforms, flags);
+                var pinnedJpegPtr = pinnedJpegBuf.AddrOfPinnedObject();
+                return this.Transform(pinnedJpegPtr, (ulong)jpegBuf.Length, transforms, flags);
+            }
+            finally {
+                if (pinnedJpegBuf.IsAllocated)
+                    pinnedJpegBuf.Free();
             }
         }
 
