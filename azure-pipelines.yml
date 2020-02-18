@@ -72,7 +72,7 @@ jobs:
     - native_windows
     - native_macos
   pool:
-    vmImage: 'VS2017-Win2016'
+    vmImage: 'windows-latest'
   steps:
   - task: DownloadBuildArtifacts@0
     inputs:
