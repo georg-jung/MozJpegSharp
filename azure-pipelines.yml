@@ -26,7 +26,7 @@ jobs:
     displayName: Install native dependencies
   - script: |
       mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
-      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\bin\*.dll %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
+      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\**\*jpeg*.dll %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
       copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\share\mozjpeg\copyright %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\mozjpeg.copyright
     displayName: 'Install'
   - task: PublishBuildArtifacts@1
