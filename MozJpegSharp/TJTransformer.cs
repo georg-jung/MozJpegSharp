@@ -1,4 +1,4 @@
-﻿// <copyright file="TJTransformer.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TJTransformer.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -67,7 +67,7 @@ namespace MozJpegSharp
             // ReSharper disable once ExceptionNotDocumented
             var count = transforms.Length;
             var destBufs = new IntPtr[count];
-            var destSizes = new ulong[count];
+            var destSizes = new uint[count];
 
             int subsampl;
             int colorspace;

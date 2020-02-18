@@ -1,4 +1,4 @@
-﻿// <copyright file="TurboJpegImport.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TurboJpegImport.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -500,32 +500,21 @@ namespace MozJpegSharp
             ulong jpegSize,
             int n,
             IntPtr[] dstBufs,
-            ulong[] dstSizes,
+            uint[] dstSizes,
             IntPtr transforms,
             int flags)
         {
-            var intSizes = new uint[dstSizes.Length];
-            for (var i = 0; i < dstSizes.Length; i++)
-            {
-                intSizes[i] = (uint)dstSizes[i];
-            }
-
             int result;
             switch (IntPtr.Size)
             {
                 case 4:
-                    result = TjTransform_x86(handle, jpegBuf, (uint)jpegSize, n, dstBufs, intSizes, transforms, flags);
+                    result = TjTransform_x86(handle, jpegBuf, (uint)jpegSize, n, dstBufs, dstSizes, transforms, flags);
                     break;
                 case 8:
-                    result = TjTransform_x64(handle, jpegBuf, jpegSize, n, dstBufs, intSizes, transforms, flags);
+                    result = TjTransform_x64(handle, jpegBuf, jpegSize, n, dstBufs, dstSizes, transforms, flags);
                     break;
                 default:
                     throw new InvalidOperationException("Invalid platform. Can not find proper function");
-            }
-
-            for (var i = 0; i < dstSizes.Length; i++)
-            {
-                dstSizes[i] = intSizes[i];
             }
 
             return result;
