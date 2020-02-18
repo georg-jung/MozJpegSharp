@@ -67,6 +67,7 @@ namespace MozJpegSharp
             // ReSharper disable once ExceptionNotDocumented
             var count = transforms.Length;
             var destBufs = new IntPtr[count];
+            var destBufHandles = new GCHandle[count];
             var destSizes = new uint[count];
 
             int subsampl;
@@ -93,65 +94,88 @@ namespace MozJpegSharp
                 throw new TJException("Unable to read Subsampling Options from jpeg header");
             }
 
-            var tjTransforms = new TjTransform[count];
-            for (var i = 0; i < count; i++)
-            {
-                var x = CorrectRegionCoordinate(transforms[i].Region.X, mcuSize.Width);
-                var y = CorrectRegionCoordinate(transforms[i].Region.Y, mcuSize.Height);
-                var w = CorrectRegionSize(transforms[i].Region.X, x, transforms[i].Region.W, width);
-                var h = CorrectRegionSize(transforms[i].Region.Y, y, transforms[i].Region.H, height);
-
-                tjTransforms[i] = new TjTransform
-                {
-                    Op = (int)transforms[i].Operation,
-                    Options = (int)transforms[i].Options,
-                    R = new TJRegion
-                    {
-                        X = x,
-                        Y = y,
-                        W = w,
-                        H = h,
-                    },
-                    Data = transforms[i].CallbackData,
-                    CustomFilter = transforms[i].CustomFilter,
-                };
-            }
-
-            var transformsPtr = TJUtils.StructArrayToIntPtr(tjTransforms);
             try
             {
-                funcResult = TurboJpegImport.TjTransform(
-                    this.transformHandle,
-                    jpegBuf,
-                    jpegBufSize,
-                    count,
-                    destBufs,
-                    destSizes,
-                    transformsPtr,
-                    (int)flags);
-
-                if (funcResult == -1)
+                var tjTransforms = new TjTransform[count];
+                for (var i = 0; i < count; i++)
                 {
-                    TJUtils.GetErrorAndThrow();
+                    var x = CorrectRegionCoordinate(transforms[i].Region.X, mcuSize.Width);
+                    var y = CorrectRegionCoordinate(transforms[i].Region.Y, mcuSize.Height);
+                    var w = CorrectRegionSize(transforms[i].Region.X, x, transforms[i].Region.W, width);
+                    var h = CorrectRegionSize(transforms[i].Region.Y, y, transforms[i].Region.H, height);
+
+                    tjTransforms[i] = new TjTransform
+                    {
+                        Op = (int)transforms[i].Operation,
+                        Options = (int)transforms[i].Options,
+                        R = new TJRegion
+                        {
+                            X = x,
+                            Y = y,
+                            W = w,
+                            H = h,
+                        },
+                        Data = transforms[i].CallbackData,
+                        CustomFilter = transforms[i].CustomFilter,
+                    };
+
+                    var heightForBufferCalc = height;
+                    var widthForBufferCalc = width;
+                    if ((transforms[i].Options & TJTransformOptions.Crop) != 0)
+                    {
+                        if (w != 0) widthForBufferCalc = w;
+                        if (h != 0) heightForBufferCalc = h;
+                    }
+
+                    var destBufSize = TurboJpegImport.TjBufSize(widthForBufferCalc, heightForBufferCalc, subsampl);
+                    var destBuf = new byte[destBufSize];
+                    destBufHandles[i] = GCHandle.Alloc(destBuf, GCHandleType.Pinned);
+                    destBufs[i] = destBufHandles[i].AddrOfPinnedObject();
+                    destSizes[i] = (uint)destBufSize;
                 }
 
-                var result = new List<byte[]>();
-                for (var i = 0; i < destBufs.Length; i++)
+                var transformsPtr = TJUtils.StructArrayToIntPtr(tjTransforms);
+                try
                 {
-                    var ptr = destBufs[i];
-                    var size = destSizes[i];
-                    var item = new byte[size];
-                    Marshal.Copy(ptr, item, 0, (int)size);
-                    result.Add(item);
+                    funcResult = TurboJpegImport.TjTransform(
+                        this.transformHandle,
+                        jpegBuf,
+                        jpegBufSize,
+                        count,
+                        destBufs,
+                        destSizes,
+                        transformsPtr,
+                        (int)flags);
 
-                    TurboJpegImport.TjFree(ptr);
+                    if (funcResult == -1)
+                    {
+                        TJUtils.GetErrorAndThrow();
+                    }
+
+                    var result = new List<byte[]>();
+                    for (var i = 0; i < destBufs.Length; i++)
+                    {
+                        var ptr = destBufs[i];
+                        var size = destSizes[i];
+                        var item = new byte[size];
+                        Marshal.Copy(ptr, item, 0, (int)size);
+                        result.Add(item);
+
+                        //TurboJpegImport.TjFree(ptr);
+                    }
+
+                    return result.ToArray();
                 }
-
-                return result.ToArray();
+                finally
+                {
+                    TJUtils.FreePtr(transformsPtr);
+                }
             }
             finally
             {
-                TJUtils.FreePtr(transformsPtr);
+                foreach (var handle in destBufHandles)
+                    if (handle.IsAllocated)
+                        handle.Free();
             }
         }
 
