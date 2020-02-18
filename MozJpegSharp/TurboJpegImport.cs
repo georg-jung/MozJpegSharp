@@ -93,7 +93,8 @@ namespace MozJpegSharp
         /// </summary>
         public static void Load()
         {
-            Load(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+            var dir = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "runtimes");
+            Load(dir);
         }
 
         /// <summary>
@@ -125,11 +126,11 @@ namespace MozJpegSharp
 
                 if (Environment.Is64BitProcess)
                 {
-                    nativeLibrariesDirectory = Path.Combine(directory, "win7-x64");
+                    nativeLibrariesDirectory = Path.Combine(directory, "win-x64");
                 }
                 else
                 {
-                    nativeLibrariesDirectory = Path.Combine(directory, "win7-x86");
+                    nativeLibrariesDirectory = Path.Combine(directory, "win-x86");
                 }
 
                 if (!Directory.Exists(nativeLibrariesDirectory))
@@ -137,7 +138,7 @@ namespace MozJpegSharp
                     throw new ArgumentOutOfRangeException(nameof(directory), $"The directory '{directory}' does not contain a subdirectory for the current architecture. The directory '{nativeLibrariesDirectory}' does not exist.");
                 }
 
-                string path = Path.Combine(nativeLibrariesDirectory, $"{UnmanagedLibrary}.dll");
+                string path = Path.Combine(nativeLibrariesDirectory, "native", $"{UnmanagedLibrary}.dll");
 
                 if (!File.Exists(path))
                 {
