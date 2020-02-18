@@ -65,4 +65,8 @@
       <Pack>true</Pack>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../build/MozJpegSharp.targets" Pack="true" PackagePath="build/MozJpegSharp.targets" />
+  </ItemGroup>
 </Project>
