@@ -189,11 +189,14 @@ namespace MozJpegSharp
         /// <exception cref="TJException"> Throws if low level turbo jpeg function fails. </exception>
         public unsafe byte[][] Transform(byte[] jpegBuf, TJTransformDescription[] transforms, TJFlags flags)
         {
+            if (jpegBuf == null)
+            {
+                throw new ArgumentNullException(nameof(jpegBuf));
+            }
             if (transforms == null)
             {
                 throw new ArgumentNullException(nameof(transforms));
             }
-
             if (transforms.Length == 0)
             {
                 throw new ArgumentException("Transforms can not be empty", nameof(transforms));
