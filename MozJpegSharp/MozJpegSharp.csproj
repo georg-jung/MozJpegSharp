@@ -3,14 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45;netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netcoreapp3.0</TargetFrameworks>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TurboJpegWrapper.snk</AssemblyOriginatorKeyFile>
-    <Product>.NET wrapper for libjpeg-turbo</Product>
+    <Product>.NET wrapper for mozjpeg</Product>
     <Description>libjpeg-turbo is a JPEG image codec that uses processor instructions to accelerate JPEG compression and decompression.</Description>
-    <PackageProjectUrl>https://github.com/qmfrederik/AS.TurboJpegWrapper</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/georg-jung/MozJpegSharp</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Authors>sergeyter, quamotion</Authors>
-    <Company>Quamotion</Company>
+    <Authors>sergeyter, quamotion, Georg Jung</Authors>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
