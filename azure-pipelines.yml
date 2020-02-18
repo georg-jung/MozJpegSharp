@@ -1,5 +1,5 @@
 variables:
-  LIBJPEG_TURBO_VERSION: '1.5.3'
+  MOZJPEG_VERSION: 'v3.3.1'
 
 jobs:
 - job: native_windows
@@ -15,23 +15,23 @@ jobs:
         PLATFORM: Win32
         RID: win7-x86
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-latest'
   steps:
   - script: |
       %VCPKG_INSTALLATION_ROOT%\vcpkg version
       %VCPKG_INSTALLATION_ROOT%\vcpkg integrate install
       set VCPKG_BUILD_TYPE=release
-      %VCPKG_INSTALLATION_ROOT%\vcpkg install libjpeg-turbo:%BUILD_ARCH%-windows
+      %VCPKG_INSTALLATION_ROOT%\vcpkg install mozjpeg:%BUILD_ARCH%-windows
     displayName: Install native dependencies
   - script: |
-      mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\libjpeg-turbo\%RID%\bin\
-      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\bin\*.dll %BUILD_ARTIFACTSTAGINGDIRECTORY%\libjpeg-turbo\%RID%\bin\
-      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\share\libjpeg-turbo\copyright %BUILD_ARTIFACTSTAGINGDIRECTORY%\libjpeg-turbo\%RID%\bin\libjpeg-turbo.copyright
+      mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
+      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\bin\*.dll %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
+      copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\share\mozjpeg\copyright %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\mozjpeg.copyright
     displayName: 'Install'
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/libjpeg-turbo/'
-      artifactName: 'libjpeg-turbo' 
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg/'
+      artifactName: 'mozjpeg' 
       publishLocation: 'Container'
     displayName: Publish
 
@@ -46,14 +46,14 @@ jobs:
       brew install autoconf automake libtool pkg-config nasm
     displayName: Install autotools, nasm
   - script: |
-      wget https://github.com/libjpeg-turbo/libjpeg-turbo/archive/${LIBJPEG_TURBO_VERSION}.tar.gz -O libjpeg-turbo-${LIBJPEG_TURBO_VERSION}.tar.gz
-      tar xvf libjpeg-turbo-${LIBJPEG_TURBO_VERSION}.tar.gz
+      wget https://github.com/mozjpeg/mozjpeg/archive/${MOZJPEG_VERSION}.tar.gz -O mozjpeg-${MOZJPEG_VERSION}.tar.gz
+      tar xvf mozjpeg-${MOZJPEG_VERSION}.tar.gz
     displayName: Download sources
   - script: |
-      cd libjpeg-turbo-${LIBJPEG_TURBO_VERSION}
+      cd mozjpeg-${MOZJPEG_VERSION}
       autoreconf -fiv
       cd ..
-      sh libjpeg-turbo-${LIBJPEG_TURBO_VERSION}/configure --prefix=${BUILD_ARTIFACTSTAGINGDIRECTORY}/libjpeg-turbo/$RID --host=$TARGET
+      sh mozjpeg-${MOZJPEG_VERSION}/configure --prefix=${BUILD_ARTIFACTSTAGINGDIRECTORY}/mozjpeg/$RID --host=$TARGET
       make
     displayName: Build
   - script: |
@@ -61,8 +61,8 @@ jobs:
     displayName: Install
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/libjpeg-turbo' 
-      artifactName: 'libjpeg-turbo' 
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg' 
+      artifactName: 'mozjpeg' 
       publishLocation: 'Container'
     displayName: Publish
 
@@ -75,22 +75,22 @@ jobs:
   steps:
   - task: DownloadBuildArtifacts@0
     inputs:
-      artifactName: libjpeg-turbo
+      artifactName: mozjpeg
   - script: |
-      mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\Quamotion.TurboJpegWrapper
+      mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\MozJpegSharp
       dotnet restore
       dotnet build -c Release
-      dotnet pack -c Release -o %BUILD_ARTIFACTSTAGINGDIRECTORY%\Quamotion.TurboJpegWrapper
+      dotnet pack -c Release -o %BUILD_ARTIFACTSTAGINGDIRECTORY%\MozJpegSharp
     displayName: Build
   - script: |
-      cd Quamotion.TurboJpegWrapper.Tests
-      set PATH=%PATH%;%SYSTEM_ARTIFACTSDIRECTORY%\libjpeg-turbo\win7-x64\bin\
+      cd MozJpegSharp.Tests
+      set PATH=%PATH%;%SYSTEM_ARTIFACTSDIRECTORY%\mozjpeg\win7-x64\bin\
       echo %PATH%
       dotnet test -c Release
     displayName: Test
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/Quamotion.TurboJpegWrapper'
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/MozJpegSharp'
       artifactName: 'nuget'
       publishLocation: 'Container'
     displayName: Publish
@@ -111,7 +111,7 @@ jobs:
       version: 3.0.100
   - task: DownloadBuildArtifacts@0
     inputs:
-      artifactName: libjpeg-turbo
+      artifactName: mozjpeg
   - script: |
       brew install mono-libgdiplus
     displayName: Install libgdiplus
@@ -120,13 +120,14 @@ jobs:
       dotnet build -c Release
     displayName: Build
   - script: |
-      cd Quamotion.TurboJpegWrapper.Tests
-      export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${SYSTEM_ARTIFACTSDIRECTORY}/libjpeg-turbo/${RID}/lib/
+      cd MozJpegSharp.Tests
+      export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${SYSTEM_ARTIFACTSDIRECTORY}/mozjpeg/${RID}/lib/
       echo $LD_LIBRARY_PATH
       dotnet test -c Release
     displayName: Test
 
 - job: test_ubuntu_18_04
+  condition: eq(1,2) # disable as there currently is no mozjpeg easily available
   dependsOn:
     - native_windows
     - native_macos
@@ -144,7 +145,7 @@ jobs:
     displayName: Set up sudo
   - task: DownloadBuildArtifacts@0
     inputs:
-      artifactName: libjpeg-turbo
+      artifactName: mozjpeg
   - script: |
       sudo add-apt-repository ppa:quamotion/ppa
       sudo apt-get update
@@ -155,7 +156,7 @@ jobs:
       dotnet build -c Release
     displayName: Build
   - script: |
-      cd Quamotion.TurboJpegWrapper.Tests
+      cd MozJpegSharp.Tests
       echo $LD_LIBRARY_PATH
       dotnet test -c Release
     displayName: Test
@@ -178,7 +179,7 @@ jobs:
     displayName: Set up sudo
   - task: DownloadBuildArtifacts@0
     inputs:
-      artifactName: libjpeg-turbo
+      artifactName: mozjpeg
   - script: |
       sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
       # Work around https://github.com/dotnet/core/issues/3853
@@ -187,14 +188,15 @@ jobs:
     displayName: Install .NET 3.0 SDK
   - script: |
       sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/qmfrederik/CentOS_7/home:qmfrederik.repo
-      sudo yum install -y libgdiplus libturbojpeg
-    displayName: Install libjpeg-turbo native binaries
+      sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/caoli5288:/mozjpeg/CentOS_7/home:caoli5288:mozjpeg.repo
+      sudo yum install -y libgdiplus mozjpeg
+    displayName: Install mozjpeg native binaries
   - script: |
       dotnet restore
       dotnet build -c Release
     displayName: Build
   - script: |
-      cd Quamotion.TurboJpegWrapper.Tests
+      cd MozJpegSharp.Tests
       echo $LD_LIBRARY_PATH
       dotnet test -c Release
     displayName: Test
