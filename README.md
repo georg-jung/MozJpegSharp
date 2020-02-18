@@ -1,5 +1,9 @@
-# .NET wrapper for libjpeg-turbo
+# .NET wrapper for mozjpeg
 [![Build Status](https://dev.azure.com/qmfrederik/AS.TurboJpegWrapper/_apis/build/status/quamotion.AS.TurboJpegWrapper?branchName=master)](https://dev.azure.com/qmfrederik/AS.TurboJpegWrapper/_build/latest?definitionId=12&branchName=master)
+
+## Credits
+
+This is heavily based on [`Quamotion.TurboJpegWrapper`](https://github.com/quamotion/AS.TurboJpegWrapper). Most credits go to Quamotion. This project replaces the used libjpeg-turbo with mozjpeg to achieve higher compression rates.
 
 libjpeg-turbo is a JPEG image codec that uses processor instructions to accelerate JPEG compression
 and decompression.
