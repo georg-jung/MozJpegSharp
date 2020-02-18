@@ -159,7 +159,7 @@ namespace MozJpegSharp
             }
             else
             {
-                throw new NotSupportedException("Quamotion.TurboJpegWrapper is supported on Windows (.NET FX, .NET Core), Linux (.NET Core) and OS X (.NET Core)");
+                throw new NotSupportedException("MozJpegSharp is supported on Windows (.NET FX, .NET Core), Linux (.NET Core) and OS X (.NET Core)");
             }
         }
 #endif
