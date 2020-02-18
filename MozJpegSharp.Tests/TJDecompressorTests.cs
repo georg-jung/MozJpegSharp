@@ -8,7 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using Xunit;
 
-namespace TurboJpegWrapper.Tests
+namespace MozJpegSharp.Tests
 {
     public class TJDecompressorTests : IDisposable
     {

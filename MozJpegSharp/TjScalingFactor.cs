@@ -5,7 +5,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     /// <summary>
     /// Scaling factor.

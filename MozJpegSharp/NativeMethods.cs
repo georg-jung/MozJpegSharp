@@ -7,7 +7,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     internal class NativeMethods
     {

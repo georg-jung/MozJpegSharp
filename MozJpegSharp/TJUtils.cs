@@ -8,7 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     internal static class TJUtils
     {

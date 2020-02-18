@@ -5,7 +5,7 @@
 
 using System;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     /// <summary>
     /// Exception thrown then internal error in the underlying turbo jpeg library is occured.

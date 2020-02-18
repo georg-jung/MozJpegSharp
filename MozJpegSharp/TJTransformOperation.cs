@@ -3,7 +3,7 @@
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     /// <summary>
     /// Transform operations for <see cref="TurboJpegImport.TjTransform"/>.

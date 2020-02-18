@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     // ReSharper disable once InconsistentNaming
 

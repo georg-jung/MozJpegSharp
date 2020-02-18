@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     /// <summary>
     /// Lossless transform.

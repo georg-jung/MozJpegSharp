@@ -11,7 +11,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace TurboJpegWrapper.Tests
+namespace MozJpegSharp.Tests
 {
     public class TJCompressorTests : IDisposable
     {

@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using Xunit;
 
-namespace TurboJpegWrapper.Tests
+namespace MozJpegSharp.Tests
 {
     public class TJTransformerTests : IDisposable
     {

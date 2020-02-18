@@ -5,7 +5,7 @@
 
 using System;
 
-namespace TurboJpegWrapper
+namespace MozJpegSharp
 {
     /// <summary>
     /// Transformation options.

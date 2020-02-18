@@ -10,7 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-namespace TurboJpegWrapper.Tests
+namespace MozJpegSharp.Tests
 {
     internal static class TestUtils
     {
