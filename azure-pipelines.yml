@@ -59,7 +59,7 @@ jobs:
 
 - job: native_macos
   pool:
-    vmImage: 'macos10.15'
+    vmImage: 'macOS-latest'
   variables:
     TARGET: x86_64-apple-darwin
     RID: osx-x64
