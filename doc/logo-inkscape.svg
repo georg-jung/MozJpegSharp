@@ -29,7 +29,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -100,14 +100,13 @@
      points="21 15 16 10 5 21"
      id="polyline833"
      style="stroke:url(#linearGradient939);stroke-opacity:1" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;letter-spacing:0px;word-spacing:0px;fill:#259d94;fill-opacity:1;stroke:none;stroke-opacity:1;"
-     x="4.7764835"
-     y="12.761218"
-     id="text973"><tspan
-       sodipodi:role="line"
-       id="tspan971"
-       x="4.7764835"
-       y="12.761218">#</tspan></text>
+  <g
+     aria-label="#"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;letter-spacing:0px;word-spacing:0px;fill:#259d94;fill-opacity:1;stroke:none;stroke-opacity:1"
+     id="text973">
+    <path
+       d="M 9.4327337,5.1883012 H 10.281692 L 8.9900253,12.761218 H 8.141067 Z m -2.2083334,0 H 8.0733586 L 6.7816919,12.761218 H 5.9327336 Z M 11.06815,7.0268429 V 7.9070513 H 5.5525252 V 7.0268429 Z m -0.307291,3.0156251 v 0.880208 H 5.2452335 v -0.880208 z"
+       style=""
+       id="path828" />
+  </g>
 </svg>
