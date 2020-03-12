@@ -124,9 +124,12 @@ jobs:
   steps:
   - template: build/templates/build.yml
   - script: |
-      echo "##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win7-x64\bin\"
+      echo ##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win7-x64\bin\
       echo %PATH%
     displayName: Append native lib dir to path
+  - script: |
+      echo %PATH%
+    displayName: Echo path
   - template: build/templates/test.yml
 
 - job: test_macos
@@ -143,10 +146,13 @@ jobs:
     displayName: Install libgdiplus
   - template: build/templates/build.yml
   - script: |
-      echo '${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/${RID}/lib/'    
-      echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/${RID}/lib/'
-      echo '${LD_LIBRARY_PATH}'
+      echo ${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/
+      echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+      echo ${LD_LIBRARY_PATH}
     displayName: Append native lib dir to path
+  - script: |
+      echo ${LD_LIBRARY_PATH}
+    displayName: Echo libpath
   - template: build/templates/test.yml
 
 - job: test_ubuntu_18_04
