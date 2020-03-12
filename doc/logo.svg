@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#ff423c"/>
+      <stop offset="1" stop-color="#ffe441"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="b" x1="3" y1="12" x2="21" y2="12" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="c" x1="5" y1="15.5" x2="21" y2="15.5" gradientUnits="userSpaceOnUse" spreadMethod="reflect"/>
+  </defs>
+  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="url(#b)"/>
+  <path stroke="url(#c)" d="M21 15l-5-5L5 21"/>
+  <text style="line-height:1.25;-inkscape-font-specification:Bahnschrift" x="4.7764835" y="12.761218" font-weight="400" font-size="10.66666698px" font-family="Bahnschrift" letter-spacing="0" word-spacing="0" fill="#259d94" stroke="none">
+    <tspan x="4.7764835" y="12.761218">#</tspan>
+  </text>
+</svg>
