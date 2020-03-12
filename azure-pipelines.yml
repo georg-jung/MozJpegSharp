@@ -92,8 +92,8 @@ jobs:
 
 - job: pack
   dependsOn:
-    - native_windows
-    - native_macos
+    - build_nativelib_windows
+    - build_nativelib_macos
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -115,8 +115,8 @@ jobs:
   
 - job: test_windows
   dependsOn:
-    - native_windows
-    - native_macos
+    - build_nativelib_windows
+    - build_nativelib_macos
   pool:
     vmImage: 'windows-latest'
   steps:
@@ -129,8 +129,8 @@ jobs:
 
 - job: test_macos
   dependsOn:
-    - native_windows
-    - native_macos
+    - build_nativelib_windows
+    - build_nativelib_macos
   pool:
     vmImage: 'macOS-10.15'
   variables:
@@ -149,8 +149,8 @@ jobs:
 - job: test_ubuntu_18_04
   condition: eq(1,2) # disable as there currently is no mozjpeg easily available
   dependsOn:
-    - native_windows
-    - native_macos
+    - build_nativelib_windows
+    - build_nativelib_macos
   variables:
     RID: ubuntu.18.04-x64
   pool:
@@ -173,8 +173,8 @@ jobs:
 
 - job: test_centos_7
   dependsOn:
-    - native_windows
-    - native_macos
+    - build_nativelib_windows
+    - build_nativelib_macos
   variables:
     RID: centos.7-x64
   pool:
