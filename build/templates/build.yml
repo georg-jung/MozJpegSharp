@@ -11,7 +11,7 @@ steps:
     includeNuGetOrg: true
     vstsFeed: 'MozJpegSharp/MozJpegSharp'
     verbosityRestore: 'Minimal'
-    #arguments: '--locked-mode'
+    arguments: '--locked-mode'
   displayName: 'Restore'
 
 - task: DotNetCoreCLI@2

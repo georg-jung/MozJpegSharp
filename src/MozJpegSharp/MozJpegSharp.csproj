@@ -3,12 +3,14 @@
   <PropertyGroup>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45;netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netcoreapp3.0</TargetFrameworks>
-    <Product>.NET wrapper for mozjpeg</Product>
+    <Product>.NET wrapper for MozJPEG</Product>
     <Description>MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.</Description>
     <Authors>sergeyter, quamotion, Georg Jung</Authors>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <Deterministic>True</Deterministic>
+    <Deterministic>true</Deterministic>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -19,6 +21,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageDescription>Managed wrapper for mozjpeg. Includes native binaries for Windows and OS X, requires MozJpeg to be installed on Linux. MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.</PackageDescription>
     <PackageTags>jpeg;mozjpeg;mozilla;jpg;mozjpg;libjpeg;libjpeg-turbo;image;images;wrapper;native</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -66,6 +69,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="../../doc/logo-nuget.png" Pack="true" PackagePath="/icon.png" />
     <None Include="../build/MozJpegSharp.targets" Pack="true" PackagePath="build/MozJpegSharp.targets" />
   </ItemGroup>
 </Project>
