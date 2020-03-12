@@ -1,15 +1,22 @@
-# MozJpegSharp (.NET wrapper for mozjpeg)
+<p align="center">
+  <a href="https://www.nuget.org/packages/MozJpegSharp/">
+    <img
+      alt="MozJpegSharp logo"
+      src="doc/logo.svg"
+      width="100"
+    />
+  </a>
+</p>
+
+# MozJpegSharp (.NET wrapper for MozJPEG)
 [![NuGet version (MozJpegSharp)](https://img.shields.io/nuget/v/MozJpegSharp.svg?style=flat)](https://www.nuget.org/packages/MozJpegSharp/)
 [![Build Status](https://dev.azure.com/georg-jung/MozJpegSharp/_apis/build/status/georg-jung.MozJpegSharp?branchName=master)](https://dev.azure.com/georg-jung/MozJpegSharp/_build/latest?definitionId=6&branchName=master)
 
-> This is currently under active development and not yet ready to use.
+> MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.
 
-MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.
+This library provides .NET wrappers for MozJPEG, allowing you to use it from any .NET language, such as C#.
 
-This library provides .NET wrappers for mozjpeg, allowing you to use it from any .NET language,
-such as C#.
-
-For Windows (32-bit and 64-bit) and macOS (all versions), the NuGet package includes libjpeg-turbo. For Linux distributions, you need to install mozjpeg using your package manager (if available) or compile it from source.
+For Windows (32-bit and 64-bit) and macOS (all versions), the NuGet package includes MozJPEG. On these platforms you just need to install the package to start producing smaller JPEGs. For Linux distributions, you need to install MozJPEG using your package manager (if available) or compile it from source.
 
 
 ## Installation
