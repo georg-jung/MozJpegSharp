@@ -1,6 +1,8 @@
 trigger:
-- master
-- release/*
+  batch: true
+  branches:
+    include:
+    - "*"
 
 variables:
   MOZJPEG_VERSION: '3.3.1'
