@@ -121,9 +121,7 @@ jobs:
     vmImage: 'windows-latest'
   steps:
   - template: build/templates/build.yml
-  - script: |
-      set PATH=%PATH%;%SYSTEM_ARTIFACTSDIRECTORY%\mozjpeg\win7-x64\bin\
-      echo %PATH%
+  - script: echo '##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win7-x64\bin\'
     displayName: Append native lib dir to path
   - template: build/templates/test.yml
 
@@ -140,9 +138,7 @@ jobs:
       brew install mono-libgdiplus
     displayName: Install libgdiplus
   - template: build/templates/build.yml
-  - script: |
-      export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${SYSTEM_ARTIFACTSDIRECTORY}/mozjpeg/${RID}/lib/
-      echo $LD_LIBRARY_PATH
+  - script: echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/${RID}/lib/'
     displayName: Append native lib dir to path
   - template: build/templates/test.yml
 
