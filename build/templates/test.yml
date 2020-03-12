@@ -1,0 +1,8 @@
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+    arguments: '-c $(BuildConfiguration) --no-restore --no-build'
+  displayName: 'Test'
+  condition: and(succeeded(), eq(variables.RunTests, true))

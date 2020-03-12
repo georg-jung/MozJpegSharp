@@ -5,10 +5,24 @@ trigger:
 variables:
   MOZJPEG_VERSION: '3.3.1'
   MOZJPEG_VERSION_IDENTIFIER: 'v3.3.1'
+  SrcDir: '$(System.DefaultWorkingDirectory)/src'
+  solution: '$(SrcDir)/MozJpegSharp.sln'
+  BuildConfiguration: 'Release'
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  RunTests: true
 
 jobs:
+- job: NBGV
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: custom
+      custom: tool
+      arguments: install --tool-path . nbgv
+    displayName: Install NBGV tool
+  - script: nbgv cloud
+    displayName: Set Version
+
 - job: native_windows
   strategy:
     maxParallel: 2
@@ -73,6 +87,29 @@ jobs:
       publishLocation: 'Container'
     displayName: Publish
 
+- job: pack
+  dependsOn:
+    - native_windows
+    - native_macos
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - template: build/templates/build.yml
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: pack
+      packagesToPack: '$(SrcDir)/MozJpegSharp/MozJpegSharp.csproj'
+      configuration: $(BuildConfiguration)
+      packDirectory: $(Build.ArtifactStagingDirectory)/MozJpegSharp
+      arguments: '--no-restore --no-build'
+    displayName: 'Pack'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/MozJpegSharp'
+      artifactName: 'nuget'
+      publishLocation: 'Container'
+    displayName: Publish
+  
 - job: test_windows
   dependsOn:
     - native_windows
@@ -80,27 +117,12 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - task: DownloadBuildArtifacts@0
-    inputs:
-      artifactName: mozjpeg
+  - template: build/templates/build.yml
   - script: |
-      mkdir %BUILD_ARTIFACTSTAGINGDIRECTORY%\MozJpegSharp
-      dotnet restore
-      dotnet build -c Release
-      dotnet pack -c Release -o %BUILD_ARTIFACTSTAGINGDIRECTORY%\MozJpegSharp
-    displayName: Build
-  - script: |
-      cd MozJpegSharp.Tests
       set PATH=%PATH%;%SYSTEM_ARTIFACTSDIRECTORY%\mozjpeg\win7-x64\bin\
       echo %PATH%
-      dotnet test -c Release
-    displayName: Test
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)/MozJpegSharp'
-      artifactName: 'nuget'
-      publishLocation: 'Container'
-    displayName: Publish
+    displayName: Append native lib dir to path
+  - template: build/templates/test.yml
 
 - job: test_macos
   dependsOn:
@@ -111,27 +133,15 @@ jobs:
   variables:
     RID: osx-x64
   steps:
-  - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk'
-    inputs:
-      packageType: sdk
-      version: 3.0.100
-  - task: DownloadBuildArtifacts@0
-    inputs:
-      artifactName: mozjpeg
   - script: |
       brew install mono-libgdiplus
     displayName: Install libgdiplus
+  - template: build/templates/build.yml
   - script: |
-      dotnet restore
-      dotnet build -c Release
-    displayName: Build
-  - script: |
-      cd MozJpegSharp.Tests
       export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${SYSTEM_ARTIFACTSDIRECTORY}/mozjpeg/${RID}/lib/
       echo $LD_LIBRARY_PATH
-      dotnet test -c Release
-    displayName: Test
+    displayName: Append native lib dir to path
+  - template: build/templates/test.yml
 
 - job: test_ubuntu_18_04
   condition: eq(1,2) # disable as there currently is no mozjpeg easily available
@@ -150,23 +160,13 @@ jobs:
       /tmp/docker exec -t -u 0 ci-container \
       sh -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confold" -y install sudo"
     displayName: Set up sudo
-  - task: DownloadBuildArtifacts@0
-    inputs:
-      artifactName: mozjpeg
   - script: |
       sudo add-apt-repository ppa:quamotion/ppa
       sudo apt-get update
       sudo apt-get install -y libc6-dev libgdiplus libcurl4 libturbojpeg
     displayName: Install libgdiplus, libcurl
-  - script: |
-      dotnet restore
-      dotnet build -c Release
-    displayName: Build
-  - script: |
-      cd MozJpegSharp.Tests
-      echo $LD_LIBRARY_PATH
-      dotnet test -c Release
-    displayName: Test
+  - template: build/templates/build.yml
+  - template: build/templates/test.yml
 
 - job: test_centos_7
   dependsOn:
@@ -184,9 +184,6 @@ jobs:
       /tmp/docker exec -t -u 0 ci-container \
       sh -c "yum install -y sudo"
     displayName: Set up sudo
-  - task: DownloadBuildArtifacts@0
-    inputs:
-      artifactName: mozjpeg
   - script: |
       sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
       # Work around https://github.com/dotnet/core/issues/3853
@@ -198,12 +195,5 @@ jobs:
       sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/caoli5288:/mozjpeg/CentOS_7/home:caoli5288:mozjpeg.repo
       sudo yum install -y libgdiplus mozjpeg
     displayName: Install mozjpeg native binaries
-  - script: |
-      dotnet restore
-      dotnet build -c Release
-    displayName: Build
-  - script: |
-      cd MozJpegSharp.Tests
-      echo $LD_LIBRARY_PATH
-      dotnet test -c Release
-    displayName: Test
+  - template: build/templates/build.yml
+  - template: build/templates/test.yml

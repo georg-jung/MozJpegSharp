@@ -1,0 +1,22 @@
+steps:
+- task: DownloadBuildArtifacts@0
+  inputs:
+    artifactName: mozjpeg
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(solution)'
+    feedsToUse: 'select'
+    includeNuGetOrg: true
+    vstsFeed: 'MozJpegSharp/MozJpegSharp'
+    verbosityRestore: 'Minimal'
+    #arguments: '--locked-mode'
+  displayName: 'Restore'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: build
+    projects: '$(solution)'
+    arguments: '-c $(BuildConfiguration) --no-restore'
+  displayName: 'Build'
