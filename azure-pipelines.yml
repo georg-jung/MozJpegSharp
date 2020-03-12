@@ -1,3 +1,7 @@
+trigger:
+- master
+- release/*
+
 variables:
   MOZJPEG_VERSION: '3.3.1'
   MOZJPEG_VERSION_IDENTIFIER: 'v3.3.1'
