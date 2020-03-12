@@ -191,8 +191,8 @@ jobs:
       sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
       # Work around https://github.com/dotnet/core/issues/3853
       sudo yum install -y https://packages.microsoft.com/centos/7/prod/netstandard-targeting-pack-2.1.0-x64.rpm
-      sudo yum install -y dotnet-sdk-3.0
-    displayName: Install .NET 3.0 SDK
+      sudo yum install -y dotnet-sdk-3.1
+    displayName: Install .NET 3.1 SDK
   - script: |
       sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/qmfrederik/CentOS_7/home:qmfrederik.repo
       sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/caoli5288:/mozjpeg/CentOS_7/home:caoli5288:mozjpeg.repo
