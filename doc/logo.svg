@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image" viewBox="0 0 24 24">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
   <defs>
     <linearGradient id="a">
       <stop offset="0" stop-color="#ff423c"/>
       <stop offset="1" stop-color="#ffe441"/>
     </linearGradient>
-    <linearGradient xlink:href="#a" id="b" x1="3" y1="12" x2="21" y2="12" gradientUnits="userSpaceOnUse"/>
-    <linearGradient xlink:href="#a" id="c" x1="5" y1="15.5" x2="21" y2="15.5" gradientUnits="userSpaceOnUse" spreadMethod="reflect"/>
+    <linearGradient xlink:href="#a" id="b" x1="3" y1="15.5" x2="21" y2="15.5" gradientUnits="userSpaceOnUse" spreadMethod="reflect"/>
   </defs>
-  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="url(#b)"/>
-  <path stroke="url(#c)" d="M21 15l-5-5L5 21"/>
-  <path d="M9.43273 5.1883h.84896l-1.29166 7.57292h-.84896zm-2.20833 0h.84896l-1.29167 7.57292h-.84896zm3.84375 1.83854v.88021H5.55253v-.8802zm-.3073 3.01563v.8802H5.24524v-.8802z" aria-label="#" font-weight="400" font-size="10.66666698px" font-family="Bahnschrift" letter-spacing="0" word-spacing="0" fill="#259d94" stroke="none"/>
+  <path d="M21 15l-5-5L5 21M5 3h14c1.108 0 2 .892 2 2v14c0 1.108-.892 2-2 2H5c-1.108 0-2-.892-2-2V5c0-1.108.892-2 2-2z" stroke="url(#b)"/>
+  <path d="M5.15418 9.70744H6.3579l.16774-1.66747h-1.1248v-.81893h1.2728l.2368-2.0424h1.20373l-.2368 2.0424h1.3616l.2368-2.0424h1.2136l-.24667 2.0424h1.08534v.81893h-1.22347l-.15787 1.66747h1.16427l.0099.81893h-1.3024l-.21707 1.9832H8.59765l.2072-1.9832H7.43338l-.21707 1.9832H5.99285l.2368-1.9832h-1.0656zm2.5752-1.66747l-.16773 1.66747H8.9035l.19734-1.66747z" aria-label="#" fill="#555" stroke="none"/>
 </svg>

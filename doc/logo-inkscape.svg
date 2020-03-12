@@ -50,17 +50,8 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient933"
-       id="linearGradient935"
-       x1="3"
-       y1="12"
-       x2="21"
-       y2="12"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient933"
        id="linearGradient939"
-       x1="5"
+       x1="3"
        y1="15.5"
        x2="21"
        y2="15.5"
@@ -80,33 +71,24 @@
      inkscape:window-height="1377"
      id="namedview837"
      showgrid="false"
-     inkscape:zoom="17.795521"
-     inkscape:cx="9.6223421"
-     inkscape:cy="18.064929"
+     inkscape:zoom="35.591042"
+     inkscape:cx="5.5958703"
+     inkscape:cy="11.843336"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg835" />
-  <rect
-     x="3"
-     y="3"
-     width="18"
-     height="18"
-     rx="2"
-     ry="2"
-     id="rect829"
-     style="stroke:url(#linearGradient935);stroke-opacity:1" />
-  <polyline
-     points="21 15 16 10 5 21"
+  <path
      id="polyline833"
-     style="stroke:url(#linearGradient939);stroke-opacity:1" />
+     style="stroke:url(#linearGradient939);stroke-opacity:1"
+     d="M 21,15 16,10 5,21 M 5,3 h 14 c 1.108,0 2,0.892 2,2 v 14 c 0,1.108 -0.892,2 -2,2 H 5 C 3.892,21 3,20.108 3,19 V 5 C 3,3.892 3.892,3 5,3 Z" />
   <g
      aria-label="#"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:Bahnschrift;letter-spacing:0px;word-spacing:0px;fill:#259d94;fill-opacity:1;stroke:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:Merriweather;-inkscape-font-specification:Bahnschrift;letter-spacing:0px;word-spacing:0px;fill:#555555;fill-opacity:1;stroke:none;stroke-opacity:1"
      id="text973">
     <path
-       d="M 9.4327337,5.1883012 H 10.281692 L 8.9900253,12.761218 H 8.141067 Z m -2.2083334,0 H 8.0733586 L 6.7816919,12.761218 H 5.9327336 Z M 11.06815,7.0268429 V 7.9070513 H 5.5525252 V 7.0268429 Z m -0.307291,3.0156251 v 0.880208 H 5.2452335 v -0.880208 z"
-       style=""
-       id="path828" />
+       d="M 5.1541784,9.7074396 H 6.3579117 L 6.5256451,8.0399729 h -1.1248 V 7.2210396 h 1.2728 l 0.2368,-2.0424 h 1.2037333 l -0.2368,2.0424 h 1.3616 l 0.2368,-2.0424 h 1.2135996 l -0.246666,2.0424 h 1.085333 v 0.8189333 h -1.223467 l -0.157866,1.6674667 h 1.164266 l 0.0099,0.8189334 h -1.3024 l -0.2170666,1.9832 H 8.5976451 l 0.2072,-1.9832 H 7.4333784 l -0.2170667,1.9832 H 5.9928451 l 0.2368,-1.9832 H 5.164045 Z m 2.5752,-1.6674667 -0.1677333,1.6674667 H 8.9035118 L 9.1008451,8.0399729 Z"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:9.86666679px;font-family:Merriweather;-inkscape-font-specification:'Merriweather Heavy';fill:#555555;fill-opacity:1"
+       id="path2593" />
   </g>
 </svg>
