@@ -5,5 +5,5 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("MozJpegSharp.Tests")]
+[assembly: InternalsVisibleTo("MozJpegSharp.Tests.GdiPlus")]
 [assembly: InternalsVisibleTo("MozJpegSharp.GdiPlus")]

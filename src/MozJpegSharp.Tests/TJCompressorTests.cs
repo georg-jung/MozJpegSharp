@@ -11,7 +11,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.Tests.GdiPlus
 {
     public class TJCompressorTests : IDisposable
     {

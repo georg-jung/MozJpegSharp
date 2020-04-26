@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using Xunit;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.Tests.GdiPlus
 {
     public class TJTransformerTests : IDisposable
     {

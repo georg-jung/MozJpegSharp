@@ -10,7 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.Tests.GdiPlus
 {
     internal static class TestUtils
     {

@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using Xunit;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.Tests.GdiPlus
 {
     public class TJDecompressorTests : IDisposable
     {
