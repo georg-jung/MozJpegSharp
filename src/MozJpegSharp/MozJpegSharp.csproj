@@ -48,6 +48,10 @@
       <PackagePath>runtimes/osx-x64/native/%(Filename)%(Extension)</PackagePath>
       <Pack>true</Pack>
     </Content>
+    <Content Include="$(SYSTEM_ARTIFACTSDIRECTORY)/mozjpeg/linux-x64/lib/libturbojpeg.so">
+      <PackagePath>runtimes/linux-x64/native/%(Filename)%(Extension)</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
   
   <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
