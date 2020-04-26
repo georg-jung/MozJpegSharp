@@ -95,6 +95,37 @@ stages:
         publishLocation: 'Container'
       displayName: Publish
 
+  - job: build_nativelib_ubuntu
+    pool:
+      vmImage: ubuntu-latest
+    variables:
+      RID: linux-x64
+    steps:
+    - checkout: none
+    - script: |
+        apt install autoconf automake libtool pkg-config nasm
+      displayName: Install autotools, nasm
+    - script: |
+        wget https://github.com/mozilla/mozjpeg/archive/${MOZJPEG_VERSION_IDENTIFIER}.tar.gz -O mozjpeg-${MOZJPEG_VERSION}.tar.gz
+        tar xvf mozjpeg-${MOZJPEG_VERSION}.tar.gz
+      displayName: Download sources
+    - script: |
+        cd mozjpeg-${MOZJPEG_VERSION}
+        autoreconf -fiv
+        cd ..
+        sh mozjpeg-${MOZJPEG_VERSION}/configure --prefix=${BUILD_ARTIFACTSTAGINGDIRECTORY}/mozjpeg/$RID
+        make
+      displayName: Build
+    - script: |
+        make install
+      displayName: Install
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg' 
+        artifactName: 'mozjpeg' 
+        publishLocation: 'Container'
+      displayName: Publish
+
 ###################
 ###### BUILD ######
 ###################
