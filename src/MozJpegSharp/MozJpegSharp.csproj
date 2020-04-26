@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net461;netstandard2.0;netstandard2.1</TargetFrameworks>
@@ -78,6 +78,6 @@
 
   <ItemGroup>
     <None Include="../../doc/logo-nuget.png" Pack="true" PackagePath="/icon.png" />
-    <None Include="../build/MozJpegSharp.targets" Pack="true" PackagePath="build/MozJpegSharp.targets" />
+    <None Include="../build/MozJpegSharp.targets" Pack="true" PackagePath="build/net461/MozJpegSharp.targets" />
   </ItemGroup>
 </Project>
