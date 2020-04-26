@@ -3,6 +3,6 @@ steps:
   inputs:
     command: 'test'
     projects: '$(solution)'
-    arguments: '-c $(BuildConfiguration) --no-restore --no-build'
+    arguments: '/p:CollectCoverage=true -c $(BuildConfiguration) --no-restore --no-build'
   displayName: 'Test'
   condition: and(succeeded(), eq(variables.RunTests, true))
