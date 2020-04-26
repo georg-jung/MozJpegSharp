@@ -3,7 +3,7 @@
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
 
-#if NETSTANDARD2_0 || NET45
+#if NETSTANDARD2_0 || NET461
 using System;
 using System.Runtime.InteropServices;
 

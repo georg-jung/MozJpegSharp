@@ -60,14 +60,14 @@ namespace MozJpegSharp
 
         public const string UnmanagedLibrary = "turbojpeg";
 
-#if NET45
+#if NET461
         static TurboJpegImport()
         {
             Load();
         }
 #endif
 
-#if !NET45 && !NETSTANDARD2_0
+#if !NET461 && !NETSTANDARD2_0
         static TurboJpegImport()
         {
             LibraryResolver.EnsureRegistered();
@@ -82,11 +82,11 @@ namespace MozJpegSharp
             get;
             private set;
         }
-#if !NET45
+#if !NET461
         = true;
 #endif
 
-#if NET45
+#if NET461
         /// <summary>
         /// Attempts to load the native library.
         /// </summary>

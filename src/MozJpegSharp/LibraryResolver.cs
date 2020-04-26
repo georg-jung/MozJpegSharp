@@ -13,7 +13,7 @@ namespace MozJpegSharp
     {
         static LibraryResolver()
         {
-#if !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET45
+#if !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET461
             NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), DllImportResolver);
 #endif
         }
@@ -23,7 +23,7 @@ namespace MozJpegSharp
             // Dummy call to trigger the static constructor
         }
 
-#if !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET45
+#if !NETSTANDARD2_0 && !NETSTANDARD2_1 && !NET461
         private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
             if (libraryName != TurboJpegImport.UnmanagedLibrary)
