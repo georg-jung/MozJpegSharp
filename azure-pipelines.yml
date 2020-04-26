@@ -197,7 +197,7 @@ stages:
       displayName: Install libgdiplus, libcurl
     - template: build/templates/build.yml
     - script: |
-        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
       displayName: Append native lib dir to path
     - template: build/templates/test.yml
 
