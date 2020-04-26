@@ -103,7 +103,7 @@ stages:
     steps:
     - checkout: none
     - script: |
-        apt install autoconf automake libtool pkg-config nasm
+        sudo apt install autoconf automake libtool pkg-config nasm
       displayName: Install autotools, nasm
     - script: |
         wget https://github.com/mozilla/mozjpeg/archive/${MOZJPEG_VERSION_IDENTIFIER}.tar.gz -O mozjpeg-${MOZJPEG_VERSION}.tar.gz
