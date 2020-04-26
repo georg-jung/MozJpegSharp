@@ -42,7 +42,7 @@ stages:
           PLATFORM: Win32
           RID: win7-x86
     pool:
-      vmImage: 'windows-latest'
+      vmImage: 'vs2017-win2016'
     steps:
     - checkout: none
     - script: |
@@ -65,7 +65,7 @@ stages:
 
   - job: build_nativelib_macos
     pool:
-      vmImage: 'macOS-latest'
+      vmImage: 'macOS-10.14'
     variables:
       TARGET: x86_64-apple-darwin
       RID: osx-x64
@@ -97,7 +97,7 @@ stages:
 
   - job: build_nativelib_ubuntu
     pool:
-      vmImage: ubuntu-latest
+      vmImage: ubuntu-16.04
     variables:
       RID: linux-x64
     steps:
