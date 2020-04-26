@@ -16,7 +16,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MozJpegSharp\MozJpegSharp.csproj" />
