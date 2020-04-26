@@ -180,6 +180,8 @@ stages:
     - template: build/templates/test.yml
 
   - job: test_ubuntu_16_04
+    variables:
+      RID: linux-x64
     pool:
       vmImage: 'ubuntu-16.04'
     container:
