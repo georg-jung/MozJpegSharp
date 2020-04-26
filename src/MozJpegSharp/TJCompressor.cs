@@ -49,54 +49,6 @@ namespace MozJpegSharp
         /// <summary>
         /// Compresses input image to the jpeg format with specified quality.
         /// </summary>
-        /// <param name="srcImage"> Source image to be converted. </param>
-        /// <param name="subSamp">
-        /// The level of chrominance subsampling to be used when
-        /// generating the JPEG image (see <see cref="TJSubsamplingOption"/> "Chrominance subsampling options".)
-        /// </param>
-        /// <param name="quality">The image quality of the generated JPEG image (1 = worst, 100 = best).</param>
-        /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
-        /// <returns>
-        /// A <see cref="byte"/> array containing the compressed image.
-        /// </returns>
-        /// <remarks>Only <see cref="PixelFormat.Format24bppRgb"/>, <see cref="PixelFormat.Format32bppArgb"/>, <see cref="PixelFormat.Format8bppIndexed"/> pixel formats are supported.</remarks>
-        /// <exception cref="TJException"> Throws if compress function failed. </exception>
-        /// <exception cref="ObjectDisposedException">Object is disposed and can not be used anymore.</exception>
-        /// <exception cref="NotSupportedException">
-        /// Some parameters' values are incompatible:
-        /// <list type="bullet">
-        /// <item><description>Subsampling not equals to <see cref="TJSubsamplingOption.Gray"/> and pixel format <see cref="TJPixelFormat.Gray"/></description></item>
-        /// </list>
-        /// </exception>
-        public byte[] Compress(Bitmap srcImage, TJSubsamplingOption subSamp, int quality, TJFlags flags)
-        {
-            if (this.isDisposed)
-            {
-                throw new ObjectDisposedException("this");
-            }
-
-            var pixelFormat = srcImage.PixelFormat;
-
-            var width = srcImage.Width;
-            var height = srcImage.Height;
-            var srcData = srcImage.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, pixelFormat);
-
-            var stride = srcData.Stride;
-            var srcPtr = srcData.Scan0;
-
-            try
-            {
-                return this.Compress(srcPtr, stride, width, height, pixelFormat, subSamp, quality, flags);
-            }
-            finally
-            {
-                srcImage.UnlockBits(srcData);
-            }
-        }
-
-        /// <summary>
-        /// Compresses input image to the jpeg format with specified quality.
-        /// </summary>
         /// <param name="srcPtr">
         /// Pointer to an image buffer containing RGB, grayscale, or CMYK pixels to be compressed.
         /// This buffer is not modified.
