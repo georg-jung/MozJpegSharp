@@ -23,8 +23,8 @@
     <file src="$bin_path$\mozjpeg\win7-x86\bin\turbojpeg.dll" target="runtimes\win-x86\native\turbojpeg.dll" />
     <file src="$bin_path$\mozjpeg\osx-x64\lib\libturbojpeg.dylib" target="runtimes\osx-x64\native\libturbojpeg.dylib" />
     <file src="$bin_path$\mozjpeg\linux-x64\lib\libturbojpeg.so" target="runtimes\linux-x64\native\libturbojpeg.so" />
-    <file src="$repo_path$\src\build\MozJpegSharp.targets" target="build\net461" />
-    <file src="$repo_path$\doc\logo-nuget.png" target="icon.png" />
+    <file src="$repo_path$src\build\MozJpegSharp.targets" target="build\net461" />
+    <file src="$repo_path$doc\logo-nuget.png" target="icon.png" />
     <!--empty directory in lib to avoid nuget adding a reference-->
     <file src="empty\" target="lib\net461" />
     <!--empty directory in lib to avoid nuget adding a reference-->
