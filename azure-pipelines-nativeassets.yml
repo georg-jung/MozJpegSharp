@@ -8,13 +8,18 @@ variables:
   - template: build/vars.yml
 
 stages:
+- stage: NBGV
+  jobs:
+  - job: NBGV
+    steps:
+      - template: build/steps/nbgv.yml
+
 - template: build/stages/buildnativelibs.yml
 
 - template: build/stages/test.yml
   parameters:
     testNativePipelineBuild: true
     dependsOn: BuildNativeLibs
-
 
 - template: build/stages/packnative.yml
   parameters:

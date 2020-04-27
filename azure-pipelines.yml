@@ -8,6 +8,12 @@ variables:
   - template: build/vars.yml
 
 stages:
+- stage: NBGV
+  jobs:
+  - job: NBGV
+    steps:
+      - template: build/steps/nbgv.yml
+
 ###################
 ###### TESTS ######
 ###################
