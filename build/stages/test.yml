@@ -1,3 +1,8 @@
+parameters:
+- name: appendNativeLibPath
+  type: boolean
+  default: false
+
 stages:
 - stage: Test
   displayName: Build and Test
@@ -8,9 +13,10 @@ stages:
       vmImage: 'windows-latest'
     steps:
     - template: ../steps/build.yml
-    - script: |
-        echo ##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win-x64\bin\
-      displayName: Append native lib dir to path
+    - ${{ if eq(parameters.appendNativeLibPath, true) }}:
+      - script: |
+          echo ##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win-x64\bin\
+        displayName: Append native lib dir to path
     - template: ../steps/test.yml
 
   - job: test_macos
@@ -23,9 +29,10 @@ stages:
         brew install mono-libgdiplus
       displayName: Install libgdiplus
     - template: ../steps/build.yml
-    - script: |
-        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
-      displayName: Append native lib dir to path
+    - ${{ if eq(parameters.appendNativeLibPath, true) }}:
+      - script: |
+          echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]${LD_LIBRARY_PATH}:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+        displayName: Append native lib dir to path
     - template: ../steps/test.yml
 
   - job: test_ubuntu_16_04
@@ -47,9 +54,10 @@ stages:
         sudo apt-get install -y libc6-dev libgdiplus libcurl4
       displayName: Install libgdiplus, libcurl
     - template: ../steps/build.yml
-    - script: |
-        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
-      displayName: Append native lib dir to path
+    - ${{ if eq(parameters.appendNativeLibPath, true) }}:
+      - script: |
+          echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+        displayName: Append native lib dir to path
     - template: ../steps/test.yml
 
   - job: test_centos_7
@@ -76,7 +84,8 @@ stages:
         sudo yum install -y libgdiplus
       displayName: Install libgdiplus
     - template: ../steps/build.yml
-    - script: |
-        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
-      displayName: Append native lib dir to path
+    - ${{ if eq(parameters.appendNativeLibPath, true) }}:
+      - script: |
+          echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+        displayName: Append native lib dir to path
     - template: ../steps/test.yml

@@ -1,0 +1,29 @@
+stages:
+- stage: DeployPushInternalFeed
+  condition: and(succeeded(), or(startsWith(variables['build.sourceBranch'], 'refs/heads/release/'), eq(variables['build.sourceBranch'], 'refs/heads/master')))
+  displayName: 'Deploy:NuGet Push Internal Feed'
+  dependsOn:
+    - Test
+    - Pack
+  jobs:
+  - deployment: MozJpegSharp
+    environment: 'internalfeed'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            # see https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&tabs=yaml#artifacts-in-release-and-deployment-jobs
+            # we want to download the specific artifact we need so skip auto download
+            - download: none
+            - task: DownloadPipelineArtifact@2
+              inputs:
+                buildType: 'current'
+                artifactName: 'nuget'
+                targetPath: '$(System.DefaultWorkingDirectory)'
+            - task: DotNetCoreCLI@2
+              displayName: 'Push to Feed'
+              inputs:
+                command: 'push'
+                searchPatternPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg;$(System.DefaultWorkingDirectory)/**/*.snupkg'
+                nuGetFeedType: 'internal'
+                feedPublish: 'MozJpegSharp/MozJpegSharp'

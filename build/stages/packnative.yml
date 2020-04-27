@@ -1,6 +1,6 @@
 stages:
 - stage: Pack
-  displayName: Build and Pack
+  displayName: Pack
   dependsOn: BuildNativeLibs
   jobs:
   - job: pack
@@ -8,11 +8,13 @@ stages:
     pool:
       vmImage: 'windows-latest'
     steps:
-    - template: ../steps/build.yml
+    - script: |
+        mkdir $(System.DefaultWorkingDirectory)\empty
+      displayName: Mk empty directory used in NativeAssets nupkg creation
     - task: DotNetCoreCLI@2
       inputs:
         command: pack
-        packagesToPack: '$(SrcDir)/**/*.csproj;!**/*.Tests.csproj;!**/*.NativeAssets.csproj'
+        packagesToPack: '$(SrcDir)/**/*NativeAssets.csproj;!**/*.Tests.csproj'
         configuration: $(BuildConfiguration)
         packDirectory: $(Build.ArtifactStagingDirectory)/MozJpegSharp
         arguments: '--no-restore --no-build'

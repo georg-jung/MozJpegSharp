@@ -1,0 +1,19 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - "*"
+
+variables:
+  - template: build/vars.yml
+
+stages:
+- template: build/stages/buildnativelibs.yml
+
+- template: build/stages/test.yml
+  parameters:
+    appendNativeLibPath: true
+
+- template: build/stages/packnative.yml
+
+- template: build/stages/deploy.yml
