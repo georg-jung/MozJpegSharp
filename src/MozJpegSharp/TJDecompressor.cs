@@ -80,7 +80,7 @@ namespace MozJpegSharp
         /// <param name="width">Width of image in pixels.</param>
         /// <param name="height">Height of image in pixels.</param>
         /// <param name="stride">Bytes per line in the destination image.</param>
-        public unsafe void Decompress(Span<byte> jpegBuf, Span<byte> outBuf, TJPixelFormat destPixelFormat, TJFlags flags, out int width, out int height, out int stride)
+        public unsafe void Decompress(ReadOnlySpan<byte> jpegBuf, Span<byte> outBuf, TJPixelFormat destPixelFormat, TJFlags flags, out int width, out int height, out int stride)
         {
             fixed (byte* jpegBufPtr = jpegBuf)
             fixed (byte* outBufPtr = outBuf)
