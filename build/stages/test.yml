@@ -6,7 +6,6 @@ parameters:
 stages:
 - stage: Test
   displayName: Build and Test
-  dependsOn: BuildNativeLibs
   jobs:
   - job: test_windows
     pool:
