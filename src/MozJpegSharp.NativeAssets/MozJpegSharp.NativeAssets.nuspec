@@ -26,8 +26,8 @@
     <file src="$repo_path$src\build\MozJpegSharp.targets" target="build\net461" />
     <file src="$repo_path$doc\logo-nuget.png" target="icon.png" />
     <!--empty directory in lib to avoid nuget adding a reference-->
-    <file src="empty\" target="lib\net461" />
+    <file src="$repo_path$empty\" target="lib\net461" />
     <!--empty directory in lib to avoid nuget adding a reference-->
-    <file src="empty\" target="lib\netstandard2.0" />
+    <file src="$repo_path$empty\" target="lib\netstandard2.0" />
   </files>
 </package>
