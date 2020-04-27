@@ -142,7 +142,7 @@ stages:
     - task: DotNetCoreCLI@2
       inputs:
         command: pack
-        packagesToPack: '$(SrcDir)/MozJpegSharp/MozJpegSharp.csproj'
+        packagesToPack: '$(SrcDir)/**/*.csproj;!**/*.Tests.csproj'
         configuration: $(BuildConfiguration)
         packDirectory: $(Build.ArtifactStagingDirectory)/MozJpegSharp
         arguments: '--no-restore --no-build'
