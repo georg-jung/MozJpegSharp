@@ -11,6 +11,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace MozJpegSharp.GdiPlus.Tests
 {
     public class TJCompressorTests : IDisposable
