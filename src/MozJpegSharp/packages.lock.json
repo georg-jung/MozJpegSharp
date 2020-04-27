@@ -125,12 +125,6 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "System.Drawing.Common": {
-        "type": "Direct",
-        "requested": "[4.6.0, )",
-        "resolved": "4.6.0",
-        "contentHash": "2A3spjjoPZnvpVh/sDTzd+0H8ZqTdr+hH/6obB8MMfG81EJ85PmxCKDBxhBVQiA25PliKAZ1sKogDcq9mSnFEA=="
-      },
       "System.Memory": {
         "type": "Direct",
         "requested": "[4.5.4, )",
@@ -221,12 +215,6 @@
         "requested": "[3.1.74, )",
         "resolved": "3.1.74",
         "contentHash": "9+zWRGxkeV1pNTF6g4uiNu5OZXBPY4YXEq24H1a8iWsuDqSrprNoLffA4LeIoJXhAOqb1P0aa3v7EoZakPWdaw=="
-      },
-      "System.Drawing.Common": {
-        "type": "Direct",
-        "requested": "[4.6.0, )",
-        "resolved": "4.6.0",
-        "contentHash": "2A3spjjoPZnvpVh/sDTzd+0H8ZqTdr+hH/6obB8MMfG81EJ85PmxCKDBxhBVQiA25PliKAZ1sKogDcq9mSnFEA=="
       },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",

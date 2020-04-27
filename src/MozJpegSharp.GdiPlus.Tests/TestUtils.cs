@@ -1,4 +1,4 @@
-﻿// <copyright file="TestUtils.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TestUtils.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -10,7 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.GdiPlus.Tests
 {
     internal static class TestUtils
     {

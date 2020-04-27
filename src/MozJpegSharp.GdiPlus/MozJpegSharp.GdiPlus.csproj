@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <RootNamespace>MozJpegSharp</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>MozJpegSharp.GdiPlus</PackageId>
+    <PackageProjectUrl>https://github.com/georg-jung/MozJpegSharp</PackageProjectUrl>
+    <PackageDescription>GDI+ methods for MozJpegSharp. Install this package if you want to compress System.Drawing.Bitmap objects using MozJPEG. Requires libgdiplus to be installed on macOS and Linux. For better cross-platform compatibility look at MozJpegSharp.ImageSharp.
+      MozJpegSharp is a managed wrapper for MozJPEG. Includes native binaries for Windows, macOS and Linux.
+      MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders.
+    </PackageDescription>
+    <PackageTags>gdiplus;jpeg;mozjpeg;mozilla;jpg;mozjpg;libjpeg;libjpeg-turbo;image;images;wrapper;native</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <Description>GDI+ methods for MozJpegSharp.</Description>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net461'">
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MozJpegSharp\MozJpegSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../doc/logo-nuget.png" Pack="true" PackagePath="/icon.png" />
+  </ItemGroup>
+</Project>

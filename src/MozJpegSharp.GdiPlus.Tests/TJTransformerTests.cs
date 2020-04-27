@@ -1,4 +1,4 @@
-﻿// <copyright file="TJTransformerTests.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TJTransformerTests.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using Xunit;
 
-namespace MozJpegSharp.Tests
+namespace MozJpegSharp.GdiPlus.Tests
 {
     public class TJTransformerTests : IDisposable
     {
