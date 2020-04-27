@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Automatically generated-->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>MozJpegSharp.NativeAssets</id>
+    <title>MozJpegSharp.NativeAssets</title>
+    <version>$version$</version>
+    <authors>$authors$</authors>
+    <copyright>$copyright$</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <repository type="git" url="https://github.com/georg-jung/MozJpegSharp" />
+    <summary>$summary$</summary>
+    <tags>jpeg;mozjpeg;mozilla;jpg;mozjpg;libjpeg;libjpeg-turbo;image;images;native</tags>
+    <releaseNotes>$releaseNotes$</releaseNotes>
+    <description>This package contains platform-specific native code builds of MozJPEG for use with MozJpegSharp.  To use this, you need MozJpegSharp.Core.  A convenience package is named MozJpegSharp.</description>
+    <icon>icon.png</icon>
+  </metadata>
+  <files>
+    <file src="$msbuild_bin_path$\Microsoft Visual Studio 14.0\VC\redist\x64\Microsoft.VC140.CRT\vcruntime140.dll" target="runtimes\win-x64\native\vcruntime140.dll" />
+    <file src="$msbuild_bin_path$\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\vcruntime140.dll" target="runtimes\win-x86\native\vcruntime140.dll" />
+    <file src="$bin_path$\mozjpeg\win7-x64\turbojpeg.dll" target="runtimes\win-x64\native\turbojpeg.dll" />
+    <file src="$bin_path$\mozjpeg\win7-x86\turbojpeg.dll" target="runtimes\win-x86\native\turbojpeg.dll" />
+    <file src="$bin_path$\mozjpeg\osx-x64\lib\libturbojpeg.dylib" target="runtimes\osx-x64\lib\libturbojpeg.dylib" />
+    <file src="$bin_path$\mozjpeg\linux-x64\lib\libturbojpeg.so" target="runtimes\linux-x64\lib\libturbojpeg.so" />
+    <file src="$bin_path$\mozjpeg\linux\musl-x64\libe_sqlite3.so" target="runtimes\linux-musl-x64\native\libe_sqlite3.so" />
+    <file src="$bin_path$\mozjpeg\linux\musl-x64\libe_sqlite3.so" target="runtimes\alpine-x64\native\libe_sqlite3.so" />
+    <file src="$repo_path$\src\build\MozJpegSharp.targets" target="build\net461" />
+    <file src="$repo_path$\doc\logo-nuget.png" target="icon.png" />
+    <!--empty directory in lib to avoid nuget adding a reference-->
+    <file src="empty\" target="lib\net461" />
+    <!--empty directory in lib to avoid nuget adding a reference-->
+    <file src="empty\" target="lib\netstandard2.0" />
+  </files>
+</package>
