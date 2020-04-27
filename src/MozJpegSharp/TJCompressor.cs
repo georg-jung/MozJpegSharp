@@ -1,4 +1,4 @@
-﻿// <copyright file="TJCompressor.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TJCompressor.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -61,7 +61,7 @@ namespace MozJpegSharp
         /// </param>
         /// <param name="width">Width (in pixels) of the source image.</param>
         /// <param name="height">Height (in pixels) of the source image.</param>
-        /// <param name="pixelFormat">Pixel format of the source image (see <see cref="PixelFormat"/> "Pixel formats").</param>
+        /// <param name="tjPixelFormat">Pixel format of the source image (see <see cref="TJPixelFormat"/> "Pixel formats").</param>
         /// <param name="subSamp">
         /// The level of chrominance subsampling to be used when
         /// generating the JPEG image (see <see cref="TJSubsamplingOption"/> "Chrominance subsampling options".)
@@ -222,7 +222,7 @@ namespace MozJpegSharp
         /// </param>
         /// <param name="width">Width (in pixels) of the source image.</param>
         /// <param name="height">Height (in pixels) of the source image.</param>
-        /// <param name="pixelFormat">Pixel format of the source image (see <see cref="PixelFormat"/> "Pixel formats").</param>
+        /// <param name="pixelFormat">Pixel format of the source image (see <see cref="TJPixelFormat"/> "Pixel formats").</param>
         /// <param name="subSamp">
         /// The level of chrominance subsampling to be used when
         /// generating the JPEG image (see <see cref="TJSubsamplingOption"/> "Chrominance subsampling options".)
