@@ -1164,7 +1164,7 @@
           "xunit.extensibility.core": "[2.4.1]"
         }
       },
-      "MozJpegSharp": {
+      "mozjpegsharp.core": {
         "type": "Project"
       },
       "mozjpegsharp.nativeassets": {
@@ -1173,7 +1173,7 @@
       "mozjpegsharp.skiasharp": {
         "type": "Project",
         "dependencies": {
-          "MozJpegSharp": "1.0.0",
+          "MozJpegSharp.Core": "1.0.0",
           "SkiaSharp": "1.68.1.1"
         }
       }

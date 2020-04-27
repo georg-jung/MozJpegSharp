@@ -105,7 +105,7 @@
         "resolved": "4.5.3",
         "contentHash": "3TIsJhD1EiiT0w2CcDMN/iSSwnNnsrnbzeVHSKkaEgV85txMprmuO+Yq2AdSbeVGcg28pdNDTPK87tJhX7VFHw=="
       },
-      "MozJpegSharp": {
+      "mozjpegsharp.core": {
         "type": "Project",
         "dependencies": {
           "System.Memory": "4.5.4"
@@ -177,7 +177,7 @@
         "resolved": "1.0.0",
         "contentHash": "G8DuQY8/DK5NN+3jm5wcMcd9QYD90UV7MiLmdljSJixi3U/vNaeBKmmXUqI4DJCOeWizIUEh4ALhSt58mR+5eg=="
       },
-      "MozJpegSharp": {
+      "mozjpegsharp.core": {
         "type": "Project"
       }
     }

@@ -1176,13 +1176,13 @@
           "xunit.extensibility.core": "[2.4.1]"
         }
       },
-      "MozJpegSharp": {
+      "mozjpegsharp.core": {
         "type": "Project"
       },
       "mozjpegsharp.gdiplus": {
         "type": "Project",
         "dependencies": {
-          "MozJpegSharp": "1.0.0",
+          "MozJpegSharp.Core": "1.0.0",
           "System.Drawing.Common": "4.6.0"
         }
       },
