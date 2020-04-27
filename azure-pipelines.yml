@@ -224,9 +224,8 @@ stages:
       displayName: Install .NET 3.1 SDK
     - script: |
         sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/qmfrederik/CentOS_7/home:qmfrederik.repo
-        sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/caoli5288:/mozjpeg/CentOS_7/home:caoli5288:mozjpeg.repo
-        sudo yum install -y libgdiplus mozjpeg
-      displayName: Install mozjpeg native binaries
+        sudo yum install -y libgdiplus
+      displayName: Install libgdiplus
     - template: build/templates/build.yml
     - template: build/templates/test.yml
 
