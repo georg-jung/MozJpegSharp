@@ -76,11 +76,6 @@
           "Microsoft.NET.Test.Sdk": "15.0.0"
         }
       },
-      "coverlet.collector": {
-        "type": "Transitive",
-        "resolved": "1.2.0",
-        "contentHash": "ZB+EGXsVBIn8cew7D3S2c+rgIlokKv1dSwsXEoiFQaNXF/BSxp9Rlfz/jV1ehSWH5XpLitfRxFNW3ok7uPDOXA=="
-      },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
         "resolved": "1.0.0",
@@ -1182,7 +1177,10 @@
         }
       },
       "mozjpegsharp": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "MozJpegSharp.NativeAssets": "1.0.0"
+        }
       },
       "mozjpegsharp.gdiplus": {
         "type": "Project",
@@ -1191,15 +1189,8 @@
           "System.Drawing.Common": "4.6.0"
         }
       },
-      "mozjpegsharp.tests": {
-        "type": "Project",
-        "dependencies": {
-          "Microsoft.NET.Test.Sdk": "16.5.0",
-          "MozJpegSharp": "1.0.0",
-          "coverlet.collector": "1.2.0",
-          "xunit": "2.4.0",
-          "xunit.runner.visualstudio": "2.4.0"
-        }
+      "mozjpegsharp.nativeassets": {
+        "type": "Project"
       }
     }
   }

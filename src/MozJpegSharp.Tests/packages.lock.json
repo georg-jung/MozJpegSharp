@@ -1160,6 +1160,12 @@
         }
       },
       "mozjpegsharp": {
+        "type": "Project",
+        "dependencies": {
+          "MozJpegSharp.NativeAssets": "1.0.0"
+        }
+      },
+      "mozjpegsharp.nativeassets": {
         "type": "Project"
       }
     }

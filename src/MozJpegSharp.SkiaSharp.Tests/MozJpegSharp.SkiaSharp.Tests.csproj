@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MozJpegSharp.SkiaSharp\MozJpegSharp.SkiaSharp.csproj" />
-    <ProjectReference Include="..\MozJpegSharp\MozJpegSharp.csproj" />
+    <ProjectReference Include="..\MozJpegSharp.Core\MozJpegSharp.Core.csproj" />
   </ItemGroup>
 
 

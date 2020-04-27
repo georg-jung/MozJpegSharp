@@ -108,8 +108,12 @@
       "mozjpegsharp": {
         "type": "Project",
         "dependencies": {
+          "MozJpegSharp.NativeAssets": "1.0.0",
           "System.Memory": "4.5.4"
         }
+      },
+      "mozjpegsharp.nativeassets": {
+        "type": "Project"
       }
     },
     ".NETStandard,Version=v2.1": {
@@ -178,6 +182,12 @@
         "contentHash": "G8DuQY8/DK5NN+3jm5wcMcd9QYD90UV7MiLmdljSJixi3U/vNaeBKmmXUqI4DJCOeWizIUEh4ALhSt58mR+5eg=="
       },
       "mozjpegsharp": {
+        "type": "Project",
+        "dependencies": {
+          "MozJpegSharp.NativeAssets": "1.0.0"
+        }
+      },
+      "mozjpegsharp.nativeassets": {
         "type": "Project"
       }
     }
