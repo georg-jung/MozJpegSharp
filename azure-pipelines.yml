@@ -140,7 +140,7 @@ stages:
     steps:
     - template: build/templates/build.yml
     - script: |
-        mkdir $(SrcDir)/MozJpegSharp.NativeAssets/empty
+        mkdir $(SrcDir)\MozJpegSharp.NativeAssets\empty
       displayName: Mk empty directory used in NativeAssets nupkg creation
     - task: DotNetCoreCLI@2
       inputs:
