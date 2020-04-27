@@ -59,7 +59,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg/'
-        artifactName: 'mozjpeg' 
+        artifactName: 'mozjpeg'
         publishLocation: 'Container'
       displayName: Publish
 
@@ -90,8 +90,8 @@ stages:
       displayName: Install
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg' 
-        artifactName: 'mozjpeg' 
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        artifactName: 'mozjpeg'
         publishLocation: 'Container'
       displayName: Publish
 
@@ -121,8 +121,8 @@ stages:
       displayName: Install
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg' 
-        artifactName: 'mozjpeg' 
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        artifactName: 'mozjpeg'
         publishLocation: 'Container'
       displayName: Publish
 
@@ -134,7 +134,7 @@ stages:
   dependsOn: BuildNativeLibs
   jobs:
   - job: pack
-    condition: and(succeeded(), or(startsWith(variables['build.sourceBranch'], 'refs/heads/release/'), eq(variables['build.sourceBranch'], 'refs/heads/master')))
+    # condition: and(succeeded(), or(startsWith(variables['build.sourceBranch'], 'refs/heads/release/'), eq(variables['build.sourceBranch'], 'refs/heads/master')))
     pool:
       vmImage: 'windows-latest'
     steps:
@@ -153,7 +153,7 @@ stages:
         artifactName: 'nuget'
         publishLocation: 'Container'
       displayName: Publish
-    
+
   - job: test_windows
     pool:
       vmImage: 'windows-latest'
