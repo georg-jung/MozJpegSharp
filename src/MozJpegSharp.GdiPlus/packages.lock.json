@@ -108,7 +108,6 @@
       "mozjpegsharp": {
         "type": "Project",
         "dependencies": {
-          "System.Drawing.Common": "4.6.0",
           "System.Memory": "4.5.4"
         }
       }
