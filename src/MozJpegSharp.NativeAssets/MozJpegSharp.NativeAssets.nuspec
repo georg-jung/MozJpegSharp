@@ -4,7 +4,7 @@
   <metadata minClientVersion="2.12">
     <id>MozJpegSharp.NativeAssets</id>
     <title>MozJpegSharp.NativeAssets</title>
-    <version>$version$</version>
+    <version>3.3.1</version>
     <authors>$authors$</authors>
     <copyright>$copyright$</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
