@@ -1,0 +1,9 @@
+variables:
+  MOZJPEG_VERSION: '3.3.1'
+  MOZJPEG_VERSION_IDENTIFIER: 'v3.3.1'
+  SrcDir: '$(System.DefaultWorkingDirectory)/src'
+  solution: '$(SrcDir)/MozJpegSharp.sln'
+  BuildConfiguration: 'Release'
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  RunTests: true
