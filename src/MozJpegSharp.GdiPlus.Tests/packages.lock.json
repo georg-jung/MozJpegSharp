@@ -1185,9 +1185,6 @@
           "MozJpegSharp.Core": "1.0.0",
           "System.Drawing.Common": "4.6.0"
         }
-      },
-      "mozjpegsharp.nativeassets": {
-        "type": "Project"
       }
     }
   }

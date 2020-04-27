@@ -6,6 +6,8 @@ trigger:
 
 variables:
   - template: build/vars.yml
+  - name: DontUseNugetNativeAssets
+    value: true
 
 stages:
 - stage: NBGV

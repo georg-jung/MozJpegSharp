@@ -105,9 +105,6 @@
         "dependencies": {
           "System.Memory": "4.5.4"
         }
-      },
-      "mozjpegsharp.nativeassets": {
-        "type": "Project"
       }
     }
   }

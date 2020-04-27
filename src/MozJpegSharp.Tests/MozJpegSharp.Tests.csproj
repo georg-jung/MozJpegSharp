@@ -20,7 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MozJpegSharp.Core\MozJpegSharp.Core.csproj" />
-    <ProjectReference Include="..\MozJpegSharp.NativeAssets\MozJpegSharp.NativeAssets.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DontUseNugetNativeAssets) != true">
+    <PackageReference Include="MozJpegSharp.NativeAssets" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

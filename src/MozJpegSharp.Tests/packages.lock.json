@@ -1161,9 +1161,6 @@
       },
       "mozjpegsharp.core": {
         "type": "Project"
-      },
-      "mozjpegsharp.nativeassets": {
-        "type": "Project"
       }
     }
   }

@@ -5,6 +5,9 @@
     <NoBuild>true</NoBuild>
     <IncludeBuildOutput>false</IncludeBuildOutput>
 
+    <EmbedUntrackedSources>false</EmbedUntrackedSources>
+    <IncludeSymbols>false</IncludeSymbols>
+
     <NuspecFile>MozJpegSharp.NativeAssets.nuspec</NuspecFile>
     <NuspecProperties>repo_path=$(RepoRootPath);bin_path=$(SYSTEM_ARTIFACTSDIRECTORY);msbuild_bin_path=$(MSBuildProgramFiles32);authors=$(Authors);copyright=$(Copyright);summary=$(Description);releaseNotes=$(PackageReleaseNotes)</NuspecProperties>
   </PropertyGroup>

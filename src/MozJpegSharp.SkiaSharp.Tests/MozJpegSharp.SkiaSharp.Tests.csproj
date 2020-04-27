@@ -19,11 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MozJpegSharp.NativeAssets\MozJpegSharp.NativeAssets.csproj" />
     <ProjectReference Include="..\MozJpegSharp.SkiaSharp\MozJpegSharp.SkiaSharp.csproj" />
     <ProjectReference Include="..\MozJpegSharp.Core\MozJpegSharp.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(DontUseNugetNativeAssets) != true">
+    <PackageReference Include="MozJpegSharp.NativeAssets" Version="1.0.0" />
+  </ItemGroup>
 
   <ItemGroup Condition=" '$(OS)' == 'Unix' AND !Exists('/Library/Frameworks') ">
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="1.68.1" />
