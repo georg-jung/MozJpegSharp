@@ -4,8 +4,6 @@
 // </copyright>
 
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 
 namespace MozJpegSharp
 {
@@ -47,7 +45,7 @@ namespace MozJpegSharp
         /// </summary>
         /// <param name="jpegBuf">Pointer to a buffer containing the JPEG image to decompress. This buffer is not modified.</param>
         /// <param name="jpegBufSize">Size of the JPEG image (in bytes).</param>
-        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="PixelFormat"/> "Pixel formats".)</param>
+        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="TJPixelFormat"/> "Pixel formats".)</param>
         /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
         /// <param name="width">Width of image in pixels.</param>
         /// <param name="height">Height of image in pixels.</param>
@@ -75,7 +73,7 @@ namespace MozJpegSharp
         /// </summary>
         /// <param name="jpegBuf">Pointer to a buffer containing the JPEG image to decompress. This buffer is not modified.</param>
         /// <param name="outBuf">The buffer into which to store the decompressed JPEG image.</param>
-        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="PixelFormat"/> "Pixel formats".)</param>
+        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="TJPixelFormat"/> "Pixel formats".)</param>
         /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
         /// <param name="width">Width of image in pixels.</param>
         /// <param name="height">Height of image in pixels.</param>
@@ -96,7 +94,7 @@ namespace MozJpegSharp
         /// <param name="jpegBufSize">Size of the JPEG image (in bytes).</param>
         /// <param name="outBuf">The buffer into which to store the decompressed JPEG image.</param>
         /// <param name="outBufSize">Size of <paramref name="outBuf"/> (in bytes).</param>
-        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="PixelFormat"/> "Pixel formats".)</param>
+        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="TJPixelFormat"/> "Pixel formats".)</param>
         /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
         /// <param name="width">Width of image in pixels.</param>
         /// <param name="height">Height of image in pixels.</param>
@@ -154,7 +152,7 @@ namespace MozJpegSharp
         /// Decompress a JPEG image to an RGB, grayscale, or CMYK image.
         /// </summary>
         /// <param name="jpegBuf">A buffer containing the JPEG image to decompress. This buffer is not modified.</param>
-        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="PixelFormat"/> "Pixel formats".)</param>
+        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="TJPixelFormat"/> "Pixel formats".)</param>
         /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
         /// <param name="width">Width of image in pixels.</param>
         /// <param name="height">Height of image in pixels.</param>
@@ -362,16 +360,6 @@ namespace MozJpegSharp
                 this.Dispose(true);
                 GC.SuppressFinalize(this);
             }
-        }
-
-        internal ColorPalette FixPaletteToGrayscale(ColorPalette palette)
-        {
-            for (var index = 0; index < palette.Entries.Length; ++index)
-            {
-                palette.Entries[index] = Color.FromArgb(index, index, index);
-            }
-
-            return palette;
         }
 
         protected virtual void Dispose(bool callFromUserCode)
