@@ -11,10 +11,13 @@ stages:
 - template: build/stages/buildnativelibs.yml
 
 - template: build/stages/test.yml
-  dependsOn: BuildNativeLibs
   parameters:
     appendNativeLibPath: true
+    dependsOn: BuildNativeLibs
+
 
 - template: build/stages/packnative.yml
+  parameters:
+    dependsOn: BuildNativeLibs
 
 - template: build/stages/deploy.yml

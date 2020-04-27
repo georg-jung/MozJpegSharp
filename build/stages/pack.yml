@@ -1,7 +1,6 @@
 stages:
 - stage: Pack
   displayName: Build and Pack
-  dependsOn: BuildNativeLibs
   jobs:
   - job: pack
     # condition: and(succeeded(), or(startsWith(variables['build.sourceBranch'], 'refs/heads/release/'), eq(variables['build.sourceBranch'], 'refs/heads/master')))

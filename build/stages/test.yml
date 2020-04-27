@@ -2,10 +2,17 @@ parameters:
 - name: appendNativeLibPath
   type: boolean
   default: false
+- name: 'dependsOn'
+  type: object
+  default: []
+
 
 stages:
 - stage: Test
   displayName: Build and Test
+  dependsOn:
+  - ${{ if parameters.dependsOn }}:
+    - ${{ parameters.dependsOn }}
   jobs:
   - job: test_windows
     pool:
