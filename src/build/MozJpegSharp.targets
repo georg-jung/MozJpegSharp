@@ -29,13 +29,13 @@
       <Pack>false</Pack>
     </Content>
   </ItemGroup>
-  <!--<ItemGroup Condition=" '$(OS)' == 'Unix' AND !Exists('/Library/Frameworks') ">
-    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win7-x64\native\libe_sqlite3.so">
-      <Link>runtimes\linux-x86\native\libe_sqlite3.so</Link>
+  <ItemGroup Condition=" '$(OS)' == 'Unix' AND !Exists('/Library/Frameworks') ">
+    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libturbojpeg.so">
+      <Link>runtimes\linux-x64\native\libturbojpeg.so</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Pack>false</Pack>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libe_sqlite3.so">
+    <!--<Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libe_sqlite3.so">
       <Link>runtimes\linux-x64\native\libe_sqlite3.so</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Pack>false</Pack>
@@ -59,6 +59,6 @@
       <Link>runtimes\linux-x64\native\libe_sqlite3.so</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Pack>false</Pack>
-    </Content>
-  </ItemGroup>-->
+    </Content>-->
+  </ItemGroup>
 </Project>

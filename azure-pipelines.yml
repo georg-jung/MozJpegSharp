@@ -179,14 +179,13 @@ stages:
       displayName: Append native lib dir to path
     - template: build/templates/test.yml
 
-  - job: test_ubuntu_18_04
-    condition: eq(1,2) # disable as there currently is no mozjpeg easily available
+  - job: test_ubuntu_16_04
     variables:
-      RID: ubuntu.18.04-x64
+      RID: linux-x64
     pool:
       vmImage: 'ubuntu-16.04'
     container:
-      image: mcr.microsoft.com/dotnet/core/sdk:3.0-bionic
+      image: mcr.microsoft.com/dotnet/core/sdk:3.1-bionic
       options: "--name ci-container -v /usr/bin/docker:/tmp/docker:ro"
     steps:
     - script: |
@@ -196,14 +195,17 @@ stages:
     - script: |
         sudo add-apt-repository ppa:quamotion/ppa
         sudo apt-get update
-        sudo apt-get install -y libc6-dev libgdiplus libcurl4 libturbojpeg
+        sudo apt-get install -y libc6-dev libgdiplus libcurl4
       displayName: Install libgdiplus, libcurl
     - template: build/templates/build.yml
+    - script: |
+        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+      displayName: Append native lib dir to path
     - template: build/templates/test.yml
 
   - job: test_centos_7
     variables:
-      RID: centos.7-x64
+      RID: linux-x64
     pool:
       vmImage: 'ubuntu-16.04'
     container:
@@ -222,10 +224,12 @@ stages:
       displayName: Install .NET 3.1 SDK
     - script: |
         sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/qmfrederik/CentOS_7/home:qmfrederik.repo
-        sudo yum-config-manager -y --add-repo https://download.opensuse.org/repositories/home:/caoli5288:/mozjpeg/CentOS_7/home:caoli5288:mozjpeg.repo
-        sudo yum install -y libgdiplus mozjpeg
-      displayName: Install mozjpeg native binaries
+        sudo yum install -y libgdiplus
+      displayName: Install libgdiplus
     - template: build/templates/build.yml
+    - script: |
+        echo '##vso[task.setvariable variable=LD_LIBRARY_PATH]$LD_LIBRARY_PATH:$(System.ArtifactsDirectory)/mozjpeg/$(RID)/lib/'
+      displayName: Append native lib dir to path
     - template: build/templates/test.yml
 
 ##################
