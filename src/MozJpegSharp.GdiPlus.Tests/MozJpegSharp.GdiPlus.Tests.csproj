@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(DontUseNugetNativeAssets) != true">
-    <PackageReference Include="MozJpegSharp.NativeAssets" Version="1.0.0" />
+    <PackageReference Include="MozJpegSharp.NativeAssets" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>
