@@ -368,8 +368,10 @@ namespace MozJpegSharp
         /// </param>
         public unsafe void GetImageInfo(ReadOnlySpan<byte> jpegBuf, TJPixelFormat destPixelFormat, out int width, out int height, out int stride, out int bufSize)
         {
-            fixed (byte* jpegBufPtr = jpegBuf) {
-                this.GetImageInfo((IntPtr)jpegBufPtr, jpegBuf.Length, destPixelFormat, out width, out height, out stride, out bufSize)
+            fixed (byte* jpegBufPtr = jpegBuf)
+            {
+                this.GetImageInfo((IntPtr) jpegBufPtr, (ulong)jpegBuf.Length, destPixelFormat, out width, out height,
+                    out stride, out bufSize);
             }
         }
 
