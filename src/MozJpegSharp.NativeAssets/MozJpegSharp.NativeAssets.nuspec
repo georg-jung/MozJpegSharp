@@ -19,8 +19,8 @@
   <files>
     <file src="$msbuild_bin_path$\Microsoft Visual Studio 14.0\VC\redist\x64\Microsoft.VC140.CRT\vcruntime140.dll" target="runtimes\win-x64\native\vcruntime140.dll" />
     <file src="$msbuild_bin_path$\Microsoft Visual Studio 14.0\VC\redist\x86\Microsoft.VC140.CRT\vcruntime140.dll" target="runtimes\win-x86\native\vcruntime140.dll" />
-    <file src="$bin_path$\mozjpeg\win7-x64\bin\turbojpeg.dll" target="runtimes\win-x64\native\turbojpeg.dll" />
-    <file src="$bin_path$\mozjpeg\win7-x86\bin\turbojpeg.dll" target="runtimes\win-x86\native\turbojpeg.dll" />
+    <file src="$bin_path$\mozjpeg\win-x64\bin\turbojpeg.dll" target="runtimes\win-x64\native\turbojpeg.dll" />
+    <file src="$bin_path$\mozjpeg\win-x86\bin\turbojpeg.dll" target="runtimes\win-x86\native\turbojpeg.dll" />
     <file src="$bin_path$\mozjpeg\osx-x64\lib\libturbojpeg.dylib" target="runtimes\osx-x64\native\libturbojpeg.dylib" />
     <file src="$bin_path$\mozjpeg\linux-x64\lib\libturbojpeg.so" target="runtimes\linux-x64\native\libturbojpeg.so" />
     <file src="$repo_path$src\build\MozJpegSharp.targets" target="build\net461" />

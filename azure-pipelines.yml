@@ -36,11 +36,11 @@ stages:
         x64:
           BUILD_ARCH: x64
           PLATFORM: x64
-          RID: win7-x64
+          RID: win-x64
         x86:
           BUILD_ARCH: x86
           PLATFORM: Win32
-          RID: win7-x86
+          RID: win-x86
     pool:
       vmImage: 'vs2017-win2016'
     steps:
@@ -163,7 +163,7 @@ stages:
     steps:
     - template: build/templates/build.yml
     - script: |
-        echo ##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win7-x64\bin\
+        echo ##vso[task.prependpath]$(System.ArtifactsDirectory)\mozjpeg\win-x64\bin\
       displayName: Append native lib dir to path
     - template: build/templates/test.yml
 
