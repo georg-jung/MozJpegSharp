@@ -1,4 +1,4 @@
-﻿// <copyright file="TJDecompressor.cs" company="Autonomic Systems, Quamotion">
+// <copyright file="TJDecompressor.cs" company="Autonomic Systems, Quamotion">
 // Copyright (c) Autonomic Systems. All rights reserved.
 // Copyright (c) Quamotion. All rights reserved.
 // </copyright>
@@ -82,6 +82,30 @@ namespace MozJpegSharp
         /// <param name="stride">Bytes per line in the destination image.</param>
         public unsafe void Decompress(ReadOnlySpan<byte> jpegBuf, Span<byte> outBuf, TJPixelFormat destPixelFormat, TJFlags flags, out int width, out int height, out int stride)
         {
+            fixed (byte* jpegBufPtr = jpegBuf)
+            fixed (byte* outBufPtr = outBuf)
+            {
+                this.Decompress((IntPtr)jpegBufPtr, (ulong)jpegBuf.Length, (IntPtr)outBufPtr, outBuf.Length, destPixelFormat, flags, out width, out height, out stride);
+            }
+        }
+
+        /// <summary>
+        /// Decompress a JPEG image to an RGB, grayscale, or CMYK image.
+        /// </summary>
+        /// <param name="jpegBuf">Buffer containing the JPEG image to decompress. This buffer is not modified.</param>
+        /// <param name="destPixelFormat">Pixel format of the destination image (see <see cref="TJPixelFormat"/> "Pixel formats".)</param>
+        /// <param name="flags">The bitwise OR of one or more of the <see cref="TJFlags"/> "flags".</param>
+        /// <param name="width">Width of image in pixels.</param>
+        /// <param name="height">Height of image in pixels.</param>
+        /// <param name="stride">Bytes per line in the destination image.</param>
+        public unsafe byte[] Decompress(ReadOnlySpan<byte> jpegBuf, TJPixelFormat destPixelFormat, TJFlags flags, out int width, out int height, out int stride)
+        {
+
+            int outBufSize;
+            this.GetImageInfo(jpegBuf, destPixelFormat, out width, out height, out stride, out outBufSize);
+
+            var outBuf = new byte[outBufSize];
+
             fixed (byte* jpegBufPtr = jpegBuf)
             fixed (byte* outBufPtr = outBuf)
             {
@@ -378,6 +402,37 @@ namespace MozJpegSharp
 
             stride = TurboJpegImport.TJPAD(width * TurboJpegImport.PixelSizes[destPixelFormat]);
             bufSize = stride * height;
+        }
+
+        /// <summary>
+        /// Retrieve information about a JPEG image without decompressing it.
+        /// </summary>
+        /// <param name="jpegBuf">
+        /// Pointer to a buffer containing a JPEG image.  This buffer is not modified.
+        /// </param>
+        /// <param name="jpegBufSize">
+        /// Size of the JPEG image (in bytes).
+        /// </param>
+        /// <param name="destPixelFormat">
+        /// The pixel format of the uncompressed image.
+        /// </param>
+        /// <param name="width">
+        /// Pointer to an integer variable that will receive the width (in pixels) of the JPEG image.
+        /// </param>
+        /// <param name="height">
+        /// Pointer to an integer variable that will receive the height (in pixels) of the JPEG image.
+        /// </param>
+        /// <param name="stride">
+        /// Pointer to an integer variable that will receive the stride (in bytes) of the JPEG image.
+        /// </param>
+        /// <param name="bufSize">
+        /// The size of a buffer that can receive the uncompressed JPEG image.
+        /// </param>
+        public unsafe void GetImageInfo(ReadOnlySpan<byte> jpegBuf, TJPixelFormat destPixelFormat, out int width, out int height, out int stride, out int bufSize)
+        {
+            fixed (byte* jpegBufPtr = jpegBuf) {
+                this.GetImageInfo((IntPtr)jpegBufPtr, jpegBuf.Length, destPixelFormat, out width, out height, out stride, out bufSize)
+            }
         }
 
         /// <summary>
