@@ -12,7 +12,7 @@ stages:
 
 - template: build/stages/test.yml
   parameters:
-    appendNativeLibPath: true
+    testNativePipelineBuild: true
     dependsOn: BuildNativeLibs
 
 

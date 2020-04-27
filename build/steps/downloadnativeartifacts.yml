@@ -1,0 +1,4 @@
+steps:
+- task: DownloadBuildArtifacts@0
+  inputs:
+    artifactName: mozjpeg

@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MozJpegSharp.SkiaSharp.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MozJpegSharp.Tests", "MozJpegSharp.Tests\MozJpegSharp.Tests.csproj", "{19DF2E76-56C1-4E46-B29B-63744F47FB3A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MozJpegSharp.NativeAssets", "MozJpegSharp.NativeAssets\MozJpegSharp.NativeAssets.csproj", "{DCB6B1EF-C250-4FFF-9B2E-B6193B9B0D29}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MozJpegSharp", "MozJpegSharp\MozJpegSharp.csproj", "{8F02B2AC-309D-4250-97A3-6087DD192F53}"
 EndProject
 Global
@@ -48,10 +46,6 @@ Global
 		{19DF2E76-56C1-4E46-B29B-63744F47FB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19DF2E76-56C1-4E46-B29B-63744F47FB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19DF2E76-56C1-4E46-B29B-63744F47FB3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCB6B1EF-C250-4FFF-9B2E-B6193B9B0D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCB6B1EF-C250-4FFF-9B2E-B6193B9B0D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCB6B1EF-C250-4FFF-9B2E-B6193B9B0D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCB6B1EF-C250-4FFF-9B2E-B6193B9B0D29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F02B2AC-309D-4250-97A3-6087DD192F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F02B2AC-309D-4250-97A3-6087DD192F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F02B2AC-309D-4250-97A3-6087DD192F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
