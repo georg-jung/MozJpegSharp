@@ -242,7 +242,7 @@ namespace MozJpegSharp
         /// <item><description>Subsampling not equals to <see cref="TJSubsamplingOption.Gray"/> and pixel format <see cref="TJPixelFormat.Gray"/></description></item>
         /// </list>
         /// </exception>
-        public unsafe Span<byte> Compress(Span<byte> srcBuf, Span<byte> destBuf, int stride, int width, int height, TJPixelFormat pixelFormat, TJSubsamplingOption subSamp, int quality, TJFlags flags)
+        public unsafe Span<byte> Compress(ReadOnlySpan<byte> srcBuf, Span<byte> destBuf, int stride, int width, int height, TJPixelFormat pixelFormat, TJSubsamplingOption subSamp, int quality, TJFlags flags)
         {
             if (this.isDisposed)
             {
