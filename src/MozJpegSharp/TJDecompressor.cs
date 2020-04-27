@@ -98,9 +98,7 @@ namespace MozJpegSharp
         /// <param name="stride">Bytes per line in the destination image.</param>
         public unsafe byte[] Decompress(ReadOnlySpan<byte> jpegBuf, TJPixelFormat destPixelFormat, TJFlags flags, out int width, out int height, out int stride)
         {
-
-            int outBufSize;
-            this.GetImageInfo(jpegBuf, destPixelFormat, out width, out height, out stride, out outBufSize);
+            this.GetImageInfo(jpegBuf, destPixelFormat, out width, out height, out stride, out var outBufSize);
 
             var outBuf = new byte[outBufSize];
 
@@ -109,6 +107,8 @@ namespace MozJpegSharp
             {
                 this.Decompress((IntPtr)jpegBufPtr, (ulong)jpegBuf.Length, (IntPtr)outBufPtr, outBuf.Length, destPixelFormat, flags, out width, out height, out stride);
             }
+
+            return outBuf;
         }
 
         /// <summary>
