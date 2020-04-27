@@ -265,15 +265,11 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "mozjpegsharp": {
+      "MozJpegSharp": {
         "type": "Project",
         "dependencies": {
-          "MozJpegSharp.NativeAssets": "1.0.0",
           "System.Memory": "4.5.4"
         }
-      },
-      "mozjpegsharp.nativeassets": {
-        "type": "Project"
       }
     },
     ".NETStandard,Version=v2.1": {
@@ -531,13 +527,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "mozjpegsharp": {
-        "type": "Project",
-        "dependencies": {
-          "MozJpegSharp.NativeAssets": "1.0.0"
-        }
-      },
-      "mozjpegsharp.nativeassets": {
+      "MozJpegSharp": {
         "type": "Project"
       }
     }

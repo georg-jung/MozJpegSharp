@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MozJpegSharp.NativeAssets\MozJpegSharp.NativeAssets.csproj" />
     <ProjectReference Include="..\MozJpegSharp.SkiaSharp\MozJpegSharp.SkiaSharp.csproj" />
     <ProjectReference Include="..\MozJpegSharp.Core\MozJpegSharp.Core.csproj" />
   </ItemGroup>

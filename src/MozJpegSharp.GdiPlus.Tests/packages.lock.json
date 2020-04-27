@@ -1176,11 +1176,8 @@
           "xunit.extensibility.core": "[2.4.1]"
         }
       },
-      "mozjpegsharp": {
-        "type": "Project",
-        "dependencies": {
-          "MozJpegSharp.NativeAssets": "1.0.0"
-        }
+      "MozJpegSharp": {
+        "type": "Project"
       },
       "mozjpegsharp.gdiplus": {
         "type": "Project",

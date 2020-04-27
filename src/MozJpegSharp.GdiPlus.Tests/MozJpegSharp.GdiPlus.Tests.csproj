@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MozJpegSharp.GdiPlus\MozJpegSharp.GdiPlus.csproj" />
     <ProjectReference Include="..\MozJpegSharp.Core\MozJpegSharp.Core.csproj" />
+    <ProjectReference Include="..\MozJpegSharp.NativeAssets\MozJpegSharp.NativeAssets.csproj" />
   </ItemGroup>
 
   <ItemGroup>
