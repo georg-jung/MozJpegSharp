@@ -27,9 +27,6 @@ stages:
         packDirectory: $(Build.ArtifactStagingDirectory)/MozJpegSharp
         arguments: '--no-restore --no-build'
       displayName: 'Pack'
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/MozJpegSharp'
-        artifactName: 'nuget'
-        publishLocation: 'Container'
+    - publish: '$(Build.ArtifactStagingDirectory)/MozJpegSharp'
+      artifact: 'nuget'
       displayName: Publish
