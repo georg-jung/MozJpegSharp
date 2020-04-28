@@ -29,9 +29,11 @@ stages:
         copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\tools\mozjpeg\*jpeg*.dll %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\
         copy %VCPKG_INSTALLATION_ROOT%\installed\%BUILD_ARCH%-windows\share\mozjpeg\copyright %BUILD_ARTIFACTSTAGINGDIRECTORY%\mozjpeg\%RID%\bin\mozjpeg.copyright
       displayName: 'Install'
-    - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
-      artifact: 'mozjpeg'
-      seal: false
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg/'
+        artifactName: 'mozjpeg'
+        publishLocation: 'Container'
       displayName: Publish
 
   - job: build_nativelib_macos
@@ -59,9 +61,11 @@ stages:
     - script: |
         make install
       displayName: Install
-    - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
-      artifact: 'mozjpeg'
-      seal: false
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        artifactName: 'mozjpeg'
+        publishLocation: 'Container'
       displayName: Publish
 
   - job: build_nativelib_ubuntu
@@ -88,7 +92,9 @@ stages:
     - script: |
         make install
       displayName: Install
-    - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
-      artifact: 'mozjpeg'
-      seal: false
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        artifactName: 'mozjpeg'
+        publishLocation: 'Container'
       displayName: Publish
