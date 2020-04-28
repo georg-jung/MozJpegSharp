@@ -9,7 +9,7 @@
     <IncludeSymbols>false</IncludeSymbols>
 
     <NuspecFile>MozJpegSharp.NativeAssets.nuspec</NuspecFile>
-    <NuspecProperties>repo_path=$(RepoRootPath);bin_path=$(Pipeline.Workspace);msbuild_bin_path=$(MSBuildProgramFiles32);authors=$(Authors);copyright=$(Copyright);summary=$(Description);releaseNotes=$(PackageReleaseNotes)</NuspecProperties>
+    <NuspecProperties>repo_path=$(RepoRootPath);bin_path=$(Pipeline_Workspace);msbuild_bin_path=$(MSBuildProgramFiles32);authors=$(Authors);copyright=$(Copyright);summary=$(Description);releaseNotes=$(PackageReleaseNotes)</NuspecProperties>
   </PropertyGroup>
 
   <PropertyGroup>
