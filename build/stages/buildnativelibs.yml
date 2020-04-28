@@ -31,6 +31,7 @@ stages:
       displayName: 'Install'
     - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
       artifact: 'mozjpeg'
+      seal: false
       displayName: Publish
 
   - job: build_nativelib_macos
@@ -60,6 +61,7 @@ stages:
       displayName: Install
     - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
       artifact: 'mozjpeg'
+      seal: false
       displayName: Publish
 
   - job: build_nativelib_ubuntu
@@ -88,4 +90,5 @@ stages:
       displayName: Install
     - publish: $(Build.ArtifactStagingDirectory)/mozjpeg
       artifact: 'mozjpeg'
+      seal: false
       displayName: Publish
