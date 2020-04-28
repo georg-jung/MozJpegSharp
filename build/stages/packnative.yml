@@ -15,7 +15,8 @@ stages:
     pool:
       vmImage: 'windows-latest'
     steps:
-    - template: ../steps/downloadnativeartifacts.yml
+    - download: current
+        artifact: mozjpeg
     - script: |
         mkdir $(System.DefaultWorkingDirectory)\empty
       displayName: Mk empty directory used in NativeAssets nupkg creation
