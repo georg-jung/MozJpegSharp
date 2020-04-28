@@ -63,7 +63,7 @@ stages:
       displayName: Install
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg/**/*.dylib'
         artifactName: 'mozjpeg'
         publishLocation: 'Container'
       displayName: Publish
@@ -94,7 +94,7 @@ stages:
       displayName: Install
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg'
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/mozjpeg/**/*.so'
         artifactName: 'mozjpeg'
         publishLocation: 'Container'
       displayName: Publish
