@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: System.Drawing.Common
+    versions:
+    - "> 4.6.0, < 4.7"
+  - dependency-name: System.Drawing.Common
+    versions:
+    - ">= 4.7.a, < 4.8"
+  - dependency-name: Nerdbank.GitVersioning
+    versions:
+    - 3.3.37
+    - 3.4.190
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.8.3
+    - 16.9.1
+  - dependency-name: System.Drawing.Common
+    versions:
+    - 5.0.0
+    - 5.0.1
+  - dependency-name: coverlet.msbuild
+    versions:
+    - 3.0.2
